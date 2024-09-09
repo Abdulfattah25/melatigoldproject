@@ -1,114 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="Project1.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="Project1.css" />
     <script src="js/jquery-3.6.3.min.js"></script>
-    <link rel="stylesheet" href="fontawesome/css/all.css">
-    <title>Penjualan</title>
-</head>
+    <link rel="stylesheet" href="fontawesome/css/all.css" />
+    <title>Dashboard</title>
+  </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg bg-light">
-        <a class="navbar-brand" href="#">
-            <img src="img/Melati.jfif" alt="Logo" width="35" height="30" class="d-inline-block align-text-top">
-            Melati Gold Gallery
-        </a>
-    </nav>
-    <aside class="sidebar">
-        <ul>
-            <li>
-                <a href="Index.html">Dashboard</a>
-            </li>
-            <li>
-                <a href="#" class="inpt-btn">Input Data
-                    <span class="fas fa-caret-down first"></span>
-                </a>
-                <ul class="inpt-show">
-                    <li><a href="Saldo Awal.html">Saldo Awal</a></li>
-                    <li><a href="Manual.html">Manual</a></li>
-                    <li><a href="Penjualan.html">Penjualan</a></li>
-                    <li><a href="Pembelian.html">Pembelian</a></li>
-                    <li><a href="#">Pengeluaran</a></li>
-                    <li><a href="Valuta.html">Valuta</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#" class="utlt-btn">Utility
-                    <span class="fas fa-caret-down second"></span>
-                </a>
-                <ul class="utlt-show">
-                    <li><a href="#">Saldo Awal</a></li>
-                    <li><a href="">Manual</a></li>
-                    <li><a href="#">Penjualan</a></li>
-                    <li><a href="#">Pembelian</a></li>
-                    <li><a href="#">Pengeluaran</a></li>
-                    <li><a href="#">Valuta</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#" class="lprn-btn">Laporan
-                    <span class="fas fa-caret-down third"></span>
-                </a>
-                <ul class="lprn-show">
-                    <li><a href="#">Grand Total</a></li>
-                </ul>
-            </li>
-    </aside>
-    <main class="mainbar">
-        <h5> Tambah pengeluaran</h5>
+  <body>
+    <header>
+        <nav>
+          <div class="nav-brand">
+            <a href="#">
+              <img
+                src="img/Melati.jfif"
+                alt="Logo"/>
+              Melati Gold Official
+            </a>
+          </div>
+          <div class="akun">
+              <a href="">K</a>
+          </div>
+        </nav>
+      </header>
+    <main>
+      <div class="mainbar">
+        <h5>Tambah pengeluaran</h5>
         <div class="maintop">
-            <p>Input Pengeluaran</p>
+          <p>Input Pengeluaran</p>
         </div>
         <div class="inputsa2">
-            <form class="row g-3">
-                <div class="col-md-6">
-                    <label for="inputsld" class="form-label">Masukkan pengeluaran</label>
-                    <select class="form-select form-select-sm mb-2" aria-label=".form-select-sm example">
-                        <option selected>Pilih Kategori</option>
-                        <option value="1">Kembali Shopee</option>
-                        <option value="2">Shopee</option>
-                        <option value="2">Transfer</option>
-                        <option value="2">Setor</option>
-                        <option value="2">Belanja</option>
-                        <option value="2">Ongkir</option>
-                        <option value="2">Belanja Koko</option>
-                        <option value="2">Belanja Kopi</option>
-                    </select>
-                    <input type="text" class="form-control" id="inputsld" placeholder="masukkan pengeluaran">
-                </div>
-                <div class="col-12">
-                    <button type="submit" class="btn btn-success btn-sm">Simpan</button>
-                </div>
-            </form>
+          <form class="row g-3">
+            <div class="col-md-6">
+              <label for="inputsld" class="form-label"
+                >Masukkan pengeluaran</label
+              >
+              <select
+                class="form-select form-select-sm mb-2"
+                aria-label=".form-select-sm example"
+              >
+                <option selected>Pilih Kategori</option>
+                <option value="1">Kembali Shopee</option>
+                <option value="2">Shopee</option>
+                <option value="2">Transfer</option>
+                <option value="2">Setor</option>
+                <option value="2">Belanja</option>
+                <option value="2">Ongkir</option>
+                <option value="2">Belanja Koko</option>
+                <option value="2">Belanja Kopi</option>
+              </select>
+              <input
+                type="text"
+                class="form-control"
+                id="inputsld"
+                placeholder="masukkan pengeluaran"
+              />
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-success btn-sm">
+                Simpan
+              </button>
+            </div>
+          </form>
         </div>
+      </div>
+      <aside class="sidebar">
+        <ul>
+          <li>
+            <a href="Index.html" class="dashboard">Dashboard</a>
+          </li>
+          <li>
+            <a href="#" class="inpt-btn" data-target="inpt-show"
+              >Input Data<span class="fas fa-caret-down first"></span
+            ></a>
+            <ul class="inpt-show" id="inpt-show">
+              <li><a href="Saldo Awal.html">Saldo Awal</a></li>
+              <li><a href="Manual.html">Manual</a></li>
+              <li><a href="Penjualan.html">Penjualan</a></li>
+              <li><a href="Pembelian.html">Pembelian</a></li>
+              <li><a href="#">Pengeluaran</a></li>
+              <li><a href="Valuta.html">Valuta</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="utlt-btn" data-target="utlt-show"
+              >Utility<span class="fas fa-caret-down second"></span
+            ></a>
+            <ul class="utlt-show" id="utlt-show">
+              <li><a href="#">Edit Data</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="lprn-btn" data-target="lprn-show"
+              >Laporan
+              <span class="fas fa-caret-down third"></span>
+            </a>
+            <ul class="lprn-show" id="lprn-show">
+              <li><a href="#">Grand Total</a></li>
+            </ul>
+          </li>
+        </ul>
+      </aside>
     </main>
-
-    <script>
-        $(document).ready(function () {
-            $(".inpt-btn").click(function () {
-                $("aside ul .inpt-show").toggle();
-            });
-        });
-        $(document).ready(function () {
-            $(".utlt-btn").click(function () {
-                $("aside ul .utlt-show").toggle();
-            });
-        });
-        $(document).ready(function () {
-            $(".lprn-btn").click(function () {
-                $("aside ul .lprn-show").toggle();
-            });
-        });
-    </script>
-</body>
-
+    <script src="js/melati.js"></script>
+  </body>
 </html>

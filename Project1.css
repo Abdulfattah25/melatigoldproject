@@ -71,7 +71,7 @@ main {
 .sidebar {
   flex: 1;
   background: #092756;
-  background: var(--warna)
+  background: var(--warna);
 }
 aside ul {
   padding-left: 5px;

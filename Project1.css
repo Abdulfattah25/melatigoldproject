@@ -34,7 +34,8 @@ nav {
   align-items: center;
   height: 3rem;
   padding: 10px;
-  line-height: 3rem;
+  position:fixed;
+  width: 100%;
 }
 .akun {
   display: flex;
@@ -49,7 +50,6 @@ nav {
 }
 .akun:hover {
   box-shadow: 0 1em 1em -0.4em #591927;
-  transform: translateY(-0.25em);
   cursor: pointer;
 }
 .akun a {
@@ -60,18 +60,27 @@ color:#e7e7e7;
 
 main {
   display: flex;
-  justify-content: center;
+  padding-top:3rem;
 }
 .mainbar {
-  flex: 6;
-  order: 1;
+ width: 85%;
   height: 100vh;
+  margin-left: 15%;
+  background-image: url(img/bg.jpg);
+  background-repeat:no-repeat;
+  background-size:cover;
+  padding: 10px;
 }
 
-.sidebar {
-  flex: 1;
+aside {
+  width: 15%;
   background: #092756;
   background: var(--warna);
+  position: fixed;
+  height: 100%;
+  margin-left: 0;
+ 
+  
 }
 aside ul {
   padding-left: 5px;
@@ -134,13 +143,6 @@ aside ul ul li {
 }
 
 /*css saldo awal*/
-
-.mainbar {
-  background-image: url(img/bg.jpg);
-  background-repeat: no-repeat;
-  background-size:cover;
-  padding: 10px;
-}
 
 .maintop {
   height: 40px;

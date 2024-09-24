@@ -66,9 +66,7 @@ main {
  width: 85%;
   height: 100vh;
   margin-left: 15%;
-  background-image: url(img/bg.jpg);
-  background-repeat:no-repeat;
-  background-size:cover;
+  background-color: #e6e6e6;
   padding: 10px;
 }
 
@@ -151,7 +149,9 @@ aside ul ul li {
   font-size: 0.85rem;
   background: var(--warna);
 }
-
+.border {
+  background: var(--warna);
+}
 .inputsa2 {
   padding: 12px;
   margin-top: 10px;

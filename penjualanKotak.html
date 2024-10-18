@@ -19,54 +19,74 @@
     <link rel="stylesheet" href="Project1.css" />
     <script src="js/jquery-3.6.3.min.js"></script>
     <link rel="stylesheet" href="fontawesome/css/all.css" />
-    <title>Dashboard</title>
+    <title>Manual</title>
   </head>
 
   <body>
     <header>
-        <nav>
-          <div class="nav-brand">
-            <a href="#">
-              <img
-                src="img/Melati.jfif"
-                alt="Logo"/>
-              Melati Gold Official
-            </a>
-          </div>
-          <div class="akun">
-              <a href="">K</a>
-          </div>
-        </nav>
-      </header>
+      <nav>
+        <div class="nav-brand">
+          <a href="#">
+            <img
+              src="img/Melati.jfif"
+              alt="Logo"/>
+            Melati Gold Official
+          </a>
+        </div>
+        <div class="akun">
+            <a href="">K</a>
+        </div>
+      </nav>
+    </header>
     <main>
       <div class="mainbar">
-        <h5> Tambah Valuta</h5>
+        <h5>Penjualan Kotak</h5>
         <div class="maintop">
-            <p>Input Valuta</p>
+          <p>Tambah Penjualan Kotak</p>
         </div>
         <div class="inputsa2">
-            <form class="row g-3">
-                <div class="col-md-6">
-                    <label for="inputsld" class="form-label">Masukkan Valuta</label>
-                    <select class="form-select form-select-sm mb-2" aria-label=".form-select-sm example">
-                        <option selected>Pilih Kategori</option>
-                        <option value="1">MC</option>
-                        <option value="2">BCA</option>
-                        <option value="2">BRI</option>
-                        <option value="2">BNI</option>
-                        <option value="2">MANDIRI</option>
-                        <option value="2">SWITCHING</option>
-                        <option value="2">CC BCA</option>
-                        <option value="2">CC BRI</option>
-                        <option value="2">CC BNI</option>
-                        <option value="2">CC MANDIRI</option>
-                    </select>
-                    <input type="text" class="form-control" id="inputsld" placeholder="masukkan valuta">
-                </div>
-                <div class="col-12">
-                    <button type="submit" class="btn btn-success btn-sm">Simpan</button>
-                </div>
-            </form>
+          <form class="row g-3">
+            <div class="col-md-6">
+              <label for="inputsld" class="form-label"
+                >Masukkan Penjualan Manual</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="inputsld"
+                placeholder="input barcode jika ada"
+              />
+              <input
+                type="text"
+                class="form-control"
+                id="inputsld"
+                placeholder="nama barang"
+              />
+              <input
+                type="text"
+                class="form-control"
+                id="inputsld"
+                placeholder="kadar barang"
+              />
+              <input
+                type="text"
+                class="form-control"
+                id="inputsld"
+                placeholder="berat barang"
+              />
+              <input
+                type="text"
+                class="form-control"
+                id="inputsld"
+                placeholder="harga"
+              />
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-success btn-sm">
+                Simpan
+              </button>
+            </div>
+          </form>
         </div>
       </div>
       <aside class="sidebar">
@@ -79,12 +99,10 @@
               >Input Data<span class="fas fa-caret-down first"></span
             ></a>
             <ul class="inpt-show" id="inpt-show">
-              <li><a href="Saldo Awal.html">Saldo Awal</a></li>
-              <li><a href="Manual.html">Manual</a></li>
-              <li><a href="Penjualan.html">Penjualan</a></li>
-              <li><a href="Pembelian.html">Pembelian</a></li>
-              <li><a href="Pengeluaran.html">Pengeluaran</a></li>
-              <li><a href="#">Valuta</a></li>
+              <li><a href="#">Data Servis</a></li>
+              <li><a href="penjualanManual.html">Penjualan Manual</a></li>
+              <li><a href="#">Penjualan Kotak</a></li>
+              <li><a href="Summary.html">Laporan Kasir</a></li>
             </ul>
           </li>
           <li>

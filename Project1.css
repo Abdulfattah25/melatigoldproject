@@ -37,6 +37,17 @@ nav {
   position:fixed;
   width: 100%;
 }
+.dropdown-toggle::after {
+  display: none !important;
+}
+.dropdown-item
+ {
+  font-size: 12px;
+  text-align: center;
+}
+.dropdown-menu {
+  min-width: 100px; /* Sesuaikan lebar dropdown */
+}
 .akun {
   display: flex;
   justify-content: center;
@@ -52,11 +63,7 @@ nav {
   box-shadow: 0 1em 1em -0.4em #591927;
   cursor: pointer;
 }
-.akun a {
-  font-size: 0.85rem;
-color:#e7e7e7;
-  text-decoration: none;
-}
+
 
 main {
   display: flex;

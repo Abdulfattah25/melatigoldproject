@@ -182,5 +182,20 @@
       });
     });
   });
+
+  function formatTanggal(date) {
+    let day = String(date.getDate()).padStart(2, '0');
+    let month = String(date.getMonth() + 1).padStart(2, '0'); // Bulan dimulai dari 0
+    let year = date.getFullYear();
+
+    return day + '-' + month + '-' + year;
+  }
+
+  // Mendapatkan tanggal saat ini
+ let tanggalSekarang = new Date();
+ let tanggalFormat = formatTanggal(tanggalSekarang);
+
+  // Menampilkan tanggal di elemen dengan id 'tanggal'
+  document.getElementById('tanggal').textContent = tanggalFormat;
   
 

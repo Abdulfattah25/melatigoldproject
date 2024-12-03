@@ -15,7 +15,9 @@
 }
 
 /*css index*/
-
+body {
+  overflow-x: hidden;
+}
 .nav-brand a {
   font-weight: 500;
   font-size: 20px;
@@ -37,13 +39,24 @@ nav {
   position:fixed;
   width: 100%;
 }
+.left-nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.left-nav span {
+  font-size: 0.9rem;
+}
 .dropdown-toggle::after {
   display: none !important;
 }
-.dropdown-item
+.dropdown-menu {
+  font-size: 1rem;
+}
+.dropdown-menu li i 
  {
-  font-size: 12px;
-  text-align: center;
+  margin-right: 15px;
 }
 .dropdown-menu {
   min-width: 100px; /* Sesuaikan lebar dropdown */
@@ -63,8 +76,18 @@ nav {
   box-shadow: 0 1em 1em -0.4em #591927;
   cursor: pointer;
 }
-
-
+.boxServis {
+  background-color: #fee440;
+}
+.boxPk {
+  background-color: #00bbf9;
+}
+.boxPj {
+  background-color: #f15bb5;
+}
+.report {
+  background-color: #6eeb83;
+}
 main {
   display: flex;
   padding-top:3rem;

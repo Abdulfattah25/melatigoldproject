@@ -103,6 +103,12 @@ main {
   padding: 10px;
   margin-bottom: 20px;
 }
+.form-label, .dataBarang h6, .table th {
+  font-size: 0.85rem;
+}
+.d-flex i {
+  padding: 8px;
+}
 
 aside {
   width: 15%;

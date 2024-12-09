@@ -157,7 +157,7 @@
     var currentPath = window.location.pathname;
   
     // Loop melalui setiap tombol toggle
-    $(".inpt-btn, .utlt-btn, .lprn-btn").each(function () {
+    $(".inpt-btn, .utlt-btn, .lprn-btn, .sell-btn").each(function () {
       var target = $(this).data("target");
   
       // Bandingkan path URL saat ini dengan data-target
@@ -175,7 +175,7 @@
         $("#" + target).toggle();
       
         // Hapus kelas "active" dari semua tombol toggle
-        $(".inpt-btn, .utlt-btn, .lprn-btn").removeClass("active");
+        $(".inpt-btn, .utlt-btn, .lprn-btn, .sell-btn").removeClass("active");
       
         // Tambahkan kelas "active" ke tombol yang diklik
         $(this).addClass("active");
@@ -190,12 +190,104 @@
 
     return day + '-' + month + '-' + year;
   }
-
   // Mendapatkan tanggal saat ini
  let tanggalSekarang = new Date();
  let tanggalFormat = formatTanggal(tanggalSekarang);
-
   // Menampilkan tanggal di elemen dengan id 'tanggal'
-  document.getElementById('tanggal').textContent = tanggalFormat;
-  
+  document.getElementById('tgl').textContent = tanggalFormat;
+
+  //Data Servis
+  document.getElementById("btnTambah").addEventListener("click", function () {
+    // Ambil tbody dari tabel
+    const tbody = document.querySelector("#tableBarang tbody");
+    // Buat elemen <tr> baru
+    const newRow = document.createElement("tr");
+    // Tambahkan kolom ke dalam baris baru
+    newRow.innerHTML = `
+        <td><input type="text" class="form-control" placeholder="ID"></td>
+        <td><input type="text" class="form-control" placeholder="Nama Barang"></td>
+        <td><input type="text" class="form-control" placeholder="Jumlah"></td>
+        <td><input type="text" class="form-control" placeholder="Kadar"></td>
+        <td><input type="text" class="form-control" placeholder="Berat"></td>
+        <td><input type="text" class="form-control" placeholder="Ongkos"></td>
+        <td><input type="text" class="form-control" placeholder="Keterangan"></td>
+        <td>
+                    <button class="btn btn-danger btn-sm btnHapus">
+                        <i class="bi bi-x"></i>
+                    </button>
+          </td>
+    `;
+
+    // Tambahkan baris baru ke dalam tbody
+    tbody.appendChild(newRow);
+});
+
+// Penjualan kotak
+document.getElementById("btnTambah").addEventListener("click", function () {
+  // Ambil tbody dari tabel
+  const tbody = document.querySelector("#tableKotak tbody");
+  // Buat elemen <tr> baru
+  const newRow = document.createElement("tr");
+  // Tambahkan kolom ke dalam baris baru
+  newRow.innerHTML = `
+      <td><input type="text" class="form-control" placeholder="ID"></td>
+      <td><input type="text" class="form-control" placeholder="Nama Barang"></td>
+      <td><input type="text" class="form-control" placeholder="Jumlah"></td>
+      <td><input type="text" class="form-control" placeholder="Harga"></td>
+      <td>
+                  <button class="btn btn-danger btn-sm btnHapus">
+                      <i class="bi bi-x"></i>
+                  </button>
+        </td>
+  `;
+  // Tambahkan baris baru ke dalam tbody
+  tbody.appendChild(newRow);
+});
+
+// Penjualan Manual
+document.getElementById("btnTambah").addEventListener("click", function () {
+  // Ambil tbody dari tabel
+  const tbody = document.querySelector("#tableManual tbody");
+  // Buat elemen <tr> baru
+  const newRow = document.createElement("tr");
+  // Tambahkan kolom ke dalam baris baru
+  newRow.innerHTML = `
+      <td><input type="text" class="form-control" placeholder="ID"></td>
+                  <td><input type="text" class="form-control" placeholder="Nama Barang"></td>
+                  <td><input type="text" class="form-control" placeholder="Kadar"></td>
+                  <td><input type="text" class="form-control" placeholder="Berat"></td>
+                  <td><input type="text" class="form-control" placeholder="Ongkos"></td>
+                  <td><input type="text" class="form-control" placeholder="Keterangan"></td>
+                  <td>
+                    <button class="btn btn-danger btn-sm btnHapus">
+                        <i class="bi bi-x"></i>
+                    </button>
+                  </td>
+  `;
+  // Tambahkan baris baru ke dalam tbody
+  tbody.appendChild(newRow);
+});
+
+// Event delegation untuk menghapus baris
+document.querySelector("#tableBarang, #tableKotak, #tableManual").addEventListener("click", function (e) {
+  if (e.target.closest(".btnHapus")) {
+      const row = e.target.closest("tr");
+      row.remove(); // Hapus baris tabel
+  }
+});
+
+$(document).ready(function () {
+  // Inisialisasi Datepicker
+  $('#tanggal').datepicker({
+      format: 'yyyy-mm-dd', // Format tanggal
+      autoclose: true, // Tutup otomatis setelah pilih tanggal
+      todayHighlight: true // Sorot tanggal hari ini
+  });
+
+  // Tambahkan event listener pada ikon kalender
+  $('#calendarIcon').on('click', function () {
+      $('#tanggal').datepicker('show'); // Tampilkan Datepicker saat ikon diklik
+  });
+});
+
 

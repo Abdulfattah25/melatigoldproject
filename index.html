@@ -16,6 +16,13 @@
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
+    <!-- Datepicker CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Project1.css" />
+    <link rel="stylesheet" href="fontawesome/css/all.css" />
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
       integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
@@ -26,9 +33,9 @@
       integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="Project1.css" />
     <script src="js/jquery-3.6.3.min.js"></script>
-    <link rel="stylesheet" href="fontawesome/css/all.css" />
+    <!-- Datepicker JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
     <title>Dashboard</title>
   </head>
 
@@ -42,24 +49,43 @@
           </a>
         </div>
         <div class="left-nav">
-          <div class=""><span id="tanggal" class="font-weight-bold"></span></div>
-        <div class="dropdown">
-          <button
-            class="btn btn-secondary dropdown-toggle akun"
-            type="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            K
-          </button>
-          <ul class="dropdown-menu">
-            <li><span><i class="fa-solid fa-key opacity-75"></i></span><button class="dropdown-item" type="button" >Ganti Password</button></li>
-            <li><span><i class="fa-solid fa-gears opacity-75"></i></span><button class="dropdown-item" type="button">Pengaturan Printer</button></li>
-            <li><span><i class="fa-solid fa-download opacity-75"></i></span><button class="dropdown-item" type="button">Unduh Konektor Printer</button></li>
-            <li><button class="dropdown-item" type="button">Logout</button></li>
-          </ul>
+          <div class="">
+            <span id="tanggal" class="font-weight-bold"></span>
+          </div>
+          <div class="dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle akun"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              K
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <span><i class="fa-solid fa-key opacity-75"></i></span
+                ><button class="dropdown-item" type="button">
+                  Ganti Password
+                </button>
+              </li>
+              <li>
+                <span><i class="fa-solid fa-gears opacity-75"></i></span
+                ><button class="dropdown-item" type="button">
+                  Pengaturan Printer
+                </button>
+              </li>
+              <li>
+                <span><i class="fa-solid fa-download opacity-75"></i></span
+                ><button class="dropdown-item" type="button">
+                  Unduh Konektor Printer
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button">Logout</button>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
       </nav>
     </header>
     <main>
@@ -69,21 +95,28 @@
           <p>Dashboard</p>
         </div>
         <div class="row justify-content-center">
-            <div class="boxServis col-xl py-5 m-4 text-center text-dark d-flex flex-column align-items-center gap-2 rounded">
-              <a href="dataServis.html" class="text-dark text-decoration-none mb-2">
-                Data Servis
-              </a>
-              <i class="fa-solid fa-screwdriver-wrench fa-2x opacity-50"></i>
-            </div>
-          <div class="boxPk col-xl py-5 m-4 text-center text-dark d-flex flex-column align-items-center gap-3 rounded">
+          <div
+            class="boxServis col-xl py-5 m-4 text-center text-dark d-flex flex-column align-items-center gap-2 rounded"
+          >
             <a
-              href="penjualanKotak.html"
-              class="text-dark text-decoration-none"
+              href="dataServis.html"
+              class="text-dark text-decoration-none mb-2"
+            >
+              Data Servis
+            </a>
+            <i class="fa-solid fa-screwdriver-wrench fa-2x opacity-50"></i>
+          </div>
+          <div
+            class="boxPk col-xl py-5 m-4 text-center text-dark d-flex flex-column align-items-center gap-3 rounded"
+          >
+            <a href="penjualanKotak.html" class="text-dark text-decoration-none"
               >Penjualan Kotak</a
             >
             <i class="fa-solid fa-gift fa-2x opacity-50"></i>
           </div>
-          <div class="boxPj col-xl py-5 m-4 text-center text-dark d-flex flex-column align-items-center gap-3 rounded">
+          <div
+            class="boxPj col-xl py-5 m-4 text-center text-dark d-flex flex-column align-items-center gap-3 rounded"
+          >
             <a
               href="penjualanManual.html"
               class="text-dark text-decoration-none"
@@ -91,7 +124,9 @@
             >
             <i class="fa-solid fa-cart-shopping fa-2x opacity-50"></i>
           </div>
-          <div class="report col-xl py-5 m-4 text-center text-dark d-flex flex-column align-items-center gap-3 rounded">
+          <div
+            class="report col-xl py-5 m-4 text-center text-dark d-flex flex-column align-items-center gap-3 rounded"
+          >
             <a href="Summary.html" class="text-dark text-decoration-none"
               >Laporan Kasir</a
             >
@@ -108,33 +143,28 @@
             <a href="#" class="inpt-btn" data-target="inpt-show"
               >Input Data<span class="fas fa-caret-down first"></span
             ></a>
-            <ul class="inpt-show" id="inpt-show">
+            <ul class="inpt-btn" id="inpt-show">
+              <li><a href="#">Aksesoris Perhiasan</a></li>
               <li><a href="dataServis.html">Data Servis</a></li>
-              <li><a href="penjualanManual.html">Penjualan Manual</a></li>
-              <li><a href="penjualanKotak.html">Penjualan Kotak</a></li>
-              <li>
-                <a href="Summary.html">Laporan Kasir</a>
-                <ul>
-                  <li><a href="Saldo Awal"></a></li>
-                </ul>
-              </li>
+              <li><a href="Summary.html">Data Kasir</a></li>
             </ul>
           </li>
-          <li>
-            <a href="#" class="utlt-btn" data-target="utlt-show"
-              >Utility<span class="fas fa-caret-down second"></span
-            ></a>
+          <li><a href="#" class="sell-btn" data-target="sell-show">Penjualan<span class="fas fa-caret-down first"></span></a>
+            <ul class="sell-btn" id="sell-show">
+              <li><a href="penjualanManual.html">Penjualan Manual</a></li>
+              <li><a href="penjualanKotak.html">Penjualan Kotak</a></li>
+            </ul>
+          </li>
+          <li><a href="#" class="utlt-btn" data-target="utlt-show">Utility<span class="fas fa-caret-down second"></span></a>
             <ul class="utlt-show" id="utlt-show">
               <li><a href="#">Edit Data</a></li>
             </ul>
           </li>
-          <li>
-            <a href="#" class="lprn-btn" data-target="lprn-show"
-              >Laporan
-              <span class="fas fa-caret-down third"></span>
-            </a>
+          <li><a href="#" class="lprn-btn" data-target="lprn-show">Laporan<span class="fas fa-caret-down third"></span></a>
             <ul class="lprn-show" id="lprn-show">
-              <li><a href="#">Grand Total</a></li>
+              <li><a href="#">Laporan Barang Manual</a></li>
+              <li><a href="#">Laporan Penjualan</a></li>
+              <li><a href="#">Laporan Kasir</a></li>
             </ul>
           </li>
         </ul>

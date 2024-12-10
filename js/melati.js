@@ -268,19 +268,6 @@ document.getElementById("btnTambah").addEventListener("click", function () {
   tbody.appendChild(newRow);
 });
 
-document.getElementById("btnPengeluaran").addEventListener("click", function () {
-  const nominalPengeluaran = document.querySelector("nominal");
-  const barisBaru = document.createElement("input");
-  barisBaru.innerHTML =`
-  <input type="text"class="form-control nominal" id="inputPengeluaran" placeholder="masukkan pengeluaran"/>
-  <input type="text"class="form-control nominal" id="inputPengeluaran" placeholder="masukkan pengeluaran"/>
-  <input type="text"class="form-control nominal" id="inputPengeluaran" placeholder="masukkan pengeluaran"/>
-  <input type="text"class="form-control nominal" id="inputPengeluaran" placeholder="masukkan pengeluaran"/>
-  <input type="text"class="form-control nominal" id="inputPengeluaran" placeholder="masukkan pengeluaran"/>
-  `;
-  nominalPengeluaran.appendChild(barisBaru);
-})
-
 // Event delegation untuk menghapus baris
 document.querySelector("#tableBarang, #tableKotak, #tableManual").addEventListener("click", function (e) {
   if (e.target.closest(".btnHapus")) {
@@ -303,6 +290,7 @@ $(document).ready(function () {
   });
 });
 
-//Script harga rata-rata penjualan
+
+
 
  

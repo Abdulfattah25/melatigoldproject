@@ -6,10 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -57,22 +54,16 @@
             </button>
             <ul class="dropdown-menu">
               <li>
-                <span><i class="fa-solid fa-key opacity-75"></i></span
-                ><button class="dropdown-item" type="button">
-                  Ganti Password
-                </button>
+                <span><i class="fa-solid fa-key opacity-75"></i></span>
+                <button class="dropdown-item" type="button">Ganti Password</button>
               </li>
               <li>
-                <span><i class="fa-solid fa-gears opacity-75"></i></span
-                ><button class="dropdown-item" type="button">
-                  Pengaturan Printer
-                </button>
+                <span><i class="fa-solid fa-gears opacity-75"></i></span>
+                <button class="dropdown-item" type="button">Pengaturan Printer</button>
               </li>
               <li>
-                <span><i class="fa-solid fa-download opacity-75"></i></span
-                ><button class="dropdown-item" type="button">
-                  Unduh Konektor Printer
-                </button>
+                <span><i class="fa-solid fa-download opacity-75"></i></span>
+                <button class="dropdown-item" type="button">Unduh Konektor Printer</button>
               </li>
               <li>
                 <button class="dropdown-item" type="button">Logout</button>
@@ -91,39 +82,21 @@
         <div class="inputsa2">
           <form class="row g-6">
             <div class="col-md-3">
-              <label for="inputsld" class="form-label mt-3"
-                >Masukkan Saldo</label
-              >
-              <select
-                class="form-select form-select-sm mb-2"
-                aria-label=".form-select-sm example"
-              >
+              <label for="inputsld" class="form-label mt-3">Masukkan Saldo</label>
+              <select class="form-select form-select-sm mb-2" aria-label=".form-select-sm example">
                 <option selected>Pilih Kategori</option>
                 <option value="1">Saldo Awal</option>
                 <option value="2">Tambah Saldo</option>
               </select>
-              <input
-                type="text"
-                class="form-control"
-                id="inputsld"
-                placeholder="masukkan saldo awal"
-              />
+              <input type="text" class="form-control" id="inputsld" placeholder="masukkan saldo awal" />
             </div>
           </form>
           <form action="">
             <div class="d-flex kasir justify-content-between align-items-center mt-3">
-              <label for="inputsld" class="form-label"
-                >Masukkan Penjualan</label
-              >
-              <button
-                class="btn btn-primary mb-2"
-                id="toggleButtonPenjualan"
-                type="button"
-              >
-                Sembunyikan
-              </button>
+              <label for="inputsld" class="form-label">Masukkan Penjualan</label>
+              <button class="btn btn-primary mb-2" id="toggleButtonPenjualan" type="button">Sembunyikan</button>
             </div>
-            <table class="table table-bordered mt-1" id="salesTablePenjualan">
+            <table class="table custom-table mt-1" id="salesTablePenjualan">
               <thead class="table">
                 <tr>
                   <th>Penjualan</th>
@@ -136,60 +109,30 @@
                 <tr>
                   <td>Perhiasan Muda</td>
                   <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="hargaMuda"
-                      placeholder="Masukkan harga"
-                    />
+                    <input type="number" class="form-control" id="hargaMuda" placeholder="Masukkan harga" />
                   </td>
                   <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="beratMuda"
-                      placeholder="Masukkan berat"
-                    />
+                    <input type="number" class="form-control" id="beratMuda" placeholder="Masukkan berat" />
                   </td>
                   <td id="avgMuda"></td>
                 </tr>
                 <tr>
                   <td>Hala</td>
                   <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="hargaHala"
-                      placeholder="Masukkan harga"
-                    />
+                    <input type="number" class="form-control" id="hargaHala" placeholder="Masukkan harga" />
                   </td>
                   <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="beratHala"
-                      placeholder="Masukkan berat"
-                    />
+                    <input type="number" class="form-control" id="beratHala" placeholder="Masukkan berat" />
                   </td>
                   <td id="avgHala"></td>
                 </tr>
                 <tr>
                   <td>Manual</td>
                   <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="hargaManual"
-                      placeholder="Masukkan harga"
-                    />
+                    <input type="number" class="form-control" id="hargaManual" placeholder="Masukkan harga" />
                   </td>
                   <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="beratManual"
-                      placeholder="Masukkan berat"
-                    />
+                    <input type="number" class="form-control" id="beratManual" placeholder="Masukkan berat" />
                   </td>
                   <td id="avgManual"></td>
                 </tr>
@@ -198,18 +141,10 @@
           </form>
           <form action="">
             <div class="d-flex kasir justify-content-between align-items-center mt-3">
-              <label for="inputsld" class="form-label"
-                >Masukkan Pembelian</label
-              >
-              <button
-                class="btn btn-primary mb-2"
-                id="toggleButtonPembelian"
-                type="button"
-              >
-                Sembunyikan
-              </button>
+              <label for="inputsld" class="form-label">Masukkan Pembelian</label>
+              <button class="btn btn-primary mb-2" id="toggleButtonPembelian" type="button">Sembunyikan</button>
             </div>
-            <table class="table table-bordered" id="salesTablePembelian">
+            <table class="table custom-table" id="salesTablePembelian">
               <thead class="table">
                 <tr>
                   <th>Pembelian</th>
@@ -222,120 +157,60 @@
                 <tr>
                   <td>Kadar Tua</td>
                   <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="hargaMuda"
-                      placeholder="Masukkan harga"
-                    />
+                    <input type="number" class="form-control" id="hargaKtua" placeholder="Masukkan harga" />
                   </td>
                   <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="beratMuda"
-                      placeholder="Masukkan berat"
-                    />
+                    <input type="number" class="form-control" id="beratKtua" placeholder="Masukkan berat" />
                   </td>
                   <td id="avgMuda"></td>
                 </tr>
                 <tr>
                   <td>Leburan Tua</td>
                   <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="hargaHala"
-                      placeholder="Masukkan harga"
-                    />
+                    <input type="number" class="form-control" id="hargaLtua" placeholder="Masukkan harga" />
                   </td>
                   <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="beratHala"
-                      placeholder="Masukkan berat"
-                    />
+                    <input type="number" class="form-control" id="beratLtua" placeholder="Masukkan berat" />
                   </td>
                   <td id="avgHala"></td>
                 </tr>
                 <tr>
                   <td>Kadar Muda</td>
                   <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="hargaManual"
-                      placeholder="Masukkan harga"
-                    />
+                    <input type="number" class="form-control" id="hargaKmuda" placeholder="Masukkan harga" />
                   </td>
                   <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="beratManual"
-                      placeholder="Masukkan berat"
-                    />
+                    <input type="number" class="form-control" id="beratKmuda" placeholder="Masukkan berat" />
                   </td>
                   <td id="avgManual"></td>
                 </tr>
                 <tr>
                   <td>Leburan Muda</td>
                   <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="hargaManual"
-                      placeholder="Masukkan harga"
-                    />
+                    <input type="number" class="form-control" id="hargaLmuda" placeholder="Masukkan harga" />
                   </td>
                   <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="beratManual"
-                      placeholder="Masukkan berat"
-                    />
+                    <input type="number" class="form-control" id="beratLmuda" placeholder="Masukkan berat" />
                   </td>
                   <td id="avgManual"></td>
                 </tr>
                 <tr>
                   <td>Hapus Kode</td>
                   <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="hargaManual"
-                      placeholder="Masukkan harga"
-                    />
+                    <input type="number" class="form-control" id="hargaHkode" placeholder="Masukkan harga" />
                   </td>
                   <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="beratManual"
-                      placeholder="Masukkan berat"
-                    />
+                    <input type="number" class="form-control" id="beratHkode" placeholder="Masukkan berat" />
                   </td>
                   <td id="avgManual"></td>
                 </tr>
                 <tr>
                   <td>Logam Mulia</td>
                   <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="hargaManual"
-                      placeholder="Masukkan harga"
-                    />
+                    <input type="number" class="form-control" id="hargaLm" placeholder="Masukkan harga" />
                   </td>
                   <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="beratManual"
-                      placeholder="Masukkan berat"
-                    />
+                    <input type="number" class="form-control" id="beratLm" placeholder="Masukkan berat" />
                   </td>
                   <td id="avgManual"></td>
                 </tr>
@@ -345,15 +220,9 @@
           <form action="">
             <div class="d-flex kasir justify-content-between align-items-center mt-3">
               <label for="inputsld" class="form-label">Masukkan Valuta</label>
-              <button
-                class="btn btn-primary mb-2"
-                id="toggleButtonValuta"
-                type="button"
-              >
-                Sembunyikan
-              </button>
+              <button class="btn btn-primary mb-2" id="toggleButtonValuta" type="button">Sembunyikan</button>
             </div>
-            <table class="table table-bordered" id="salesTableValuta">
+            <table class="table custom-table" id="salesTableValuta">
               <thead class="table">
                 <tr>
                   <th>Jenis Valuta</th>
@@ -364,119 +233,97 @@
                 <tr>
                   <td>MC</td>
                   <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="hargaMuda"
-                      placeholder="Masukkan harga"
-                    />
+                    <input type="number" class="form-control" placeholder="Masukkan harga" />
                   </td>
                 </tr>
                 <tr>
                   <td>BCA</td>
                   <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="hargaMuda"
-                      placeholder="Masukkan harga"
-                    />
+                    <input type="number" class="form-control" placeholder="Masukkan harga" />
                   </td>
                 </tr>
                 <tr>
                   <td>BRI</td>
                   <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="hargaMuda"
-                      placeholder="Masukkan harga"
-                    />
+                    <input type="number" class="form-control" placeholder="Masukkan harga" />
                   </td>
                 </tr>
                 <tr>
                   <td>BNI</td>
                   <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="hargaMuda"
-                      placeholder="Masukkan harga"
-                    />
+                    <input type="number" class="form-control" placeholder="Masukkan harga" />
                   </td>
                 </tr>
                 <tr>
                   <td>MANDIRI</td>
                   <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="hargaMuda"
-                      placeholder="Masukkan harga"
-                    />
+                    <input type="number" class="form-control" placeholder="Masukkan harga" />
                   </td>
                 </tr>
                 <tr>
                   <td>SWITCH</td>
                   <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="hargaMuda"
-                      placeholder="Masukkan harga"
-                    />
+                    <input type="number" class="form-control" placeholder="Masukkan harga" />
                   </td>
                 </tr>
                 <tr>
                   <td>CREDIT CARD</td>
                   <td>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="hargaMuda"
-                      placeholder="Masukkan harga"
-                    />
+                    <input type="number" class="form-control" placeholder="Masukkan harga" />
                   </td>
                 </tr>
               </tbody>
             </table>
           </form>
-         <form action="">
-          <div class="d-flex kasir justify-content-between align-items-center mt-3">
-          <label for="inputsld" class="form-label">Masukkan pengeluaran</label>
-         </div>
-              <select
-                class="form-select form-select-sm mb-2 mt-3"
-                aria-label=".form-select-sm example"
-              >
+          <form action="">
+            <div class="kasir mt-3">
+              <label for="inputsld" class="form-label">Masukkan pengeluaran</label>
+            </div>
+            <div class="d-flex jenisPengeluaran justify-content-between mt-2 mb-2 gap-1">
+              <select class="form-select form-select-sm" aria-label=".form-select-sm example">
                 <option selected>Pilih Kategori</option>
                 <option value="1">Kembali Shopee</option>
                 <option value="2">Shopee</option>
                 <option value="2">Transfer</option>
                 <option value="2">Setor</option>
-                <option value="2">Belanja</option>
                 <option value="2">Ongkir</option>
               </select>
-              <button
-            type="button" class="btn btn-outline-primary mb-2" id="btnPengeluaran">Tambah</button>
-              <input type="text"class="form-control nominal" id="inputPengeluaran" placeholder="masukkan pengeluaran"/>
-              <input type="text"class="form-control nominal" id="inputPengeluaran" placeholder="masukkan pengeluaran"/>
-              <input type="text"class="form-control nominal" id="inputPengeluaran" placeholder="masukkan pengeluaran"/>
-              <input type="text"class="form-control nominal" id="inputPengeluaran" placeholder="masukkan pengeluaran"/>
-              <input type="text"class="form-control nominal" id="inputPengeluaran" placeholder="masukkan pengeluaran"/>
+              <button type="button" class="btn btn-outline-primary" id="btnPengeluaran">Tambah</button>
+            </div>
+            <div id="inputContainer">
+              <input
+                type="text"
+                class="form-control nominal mt-1"
+                id="inputPengeluaran"
+                placeholder="masukkan pengeluaran"
+              />
+              <input
+                type="text"
+                class="form-control nominal mt-1"
+                id="inputPengeluaran"
+                placeholder="masukkan pengeluaran"
+              />
+              <input
+                type="text"
+                class="form-control nominal mt-1"
+                id="inputPengeluaran"
+                placeholder="masukkan pengeluaran"
+              />
             </div>
           </form>
           <button class="btn btn-primary mt-3">Simpan Data</button>
         </div>
+      </div>
       <aside class="sidebar">
         <ul>
           <li>
             <a href="index.html" class="dashboard">Dashboard</a>
           </li>
           <li>
-            <a href="#" class="inpt-btn" data-target="inpt-show"
-              >Input Data<span class="fas fa-caret-down first"></span
-            ></a>
+            <a href="#" class="inpt-btn" data-target="inpt-show">
+              Input Data
+              <span class="fas fa-caret-down first"></span>
+            </a>
             <ul class="inpt-btn" id="inpt-show">
               <li><a href="#">Aksesoris Perhiasan</a></li>
               <li><a href="dataServis.html">Data Servis</a></li>
@@ -484,26 +331,29 @@
             </ul>
           </li>
           <li>
-            <a href="#" class="sell-btn" data-target="sell-show"
-              >Penjualan<span class="fas fa-caret-down first"></span
-            ></a>
+            <a href="#" class="sell-btn" data-target="sell-show">
+              Penjualan
+              <span class="fas fa-caret-down first"></span>
+            </a>
             <ul class="sell-btn" id="sell-show">
               <li><a href="penjualanManual.html">Penjualan Manual</a></li>
               <li><a href="penjualanKotak.html">Penjualan Kotak</a></li>
             </ul>
           </li>
           <li>
-            <a href="#" class="utlt-btn" data-target="utlt-show"
-              >Utility<span class="fas fa-caret-down second"></span
-            ></a>
+            <a href="#" class="utlt-btn" data-target="utlt-show">
+              Utility
+              <span class="fas fa-caret-down second"></span>
+            </a>
             <ul class="utlt-show" id="utlt-show">
               <li><a href="#">Edit Data</a></li>
             </ul>
           </li>
           <li>
-            <a href="#" class="lprn-btn" data-target="lprn-show"
-              >Laporan<span class="fas fa-caret-down third"></span
-            ></a>
+            <a href="#" class="lprn-btn" data-target="lprn-show">
+              Laporan
+              <span class="fas fa-caret-down third"></span>
+            </a>
             <ul class="lprn-show" id="lprn-show">
               <li><a href="#">Laporan Aksesoris</a></li>
               <li><a href="#">Laporan Data Servis</a></li>
@@ -514,50 +364,57 @@
         </ul>
       </aside>
     </main>
-
     <script src="js/melati.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        const toggleButton = document.querySelector("#toggleButtonPenjualan");
-        const salesTable = document.querySelector("#salesTablePenjualan");
+        const toggleButtons = [
+          { button: "#toggleButtonPenjualan", table: "#salesTablePenjualan" },
+          { button: "#toggleButtonPembelian", table: "#salesTablePembelian" },
+          { button: "#toggleButtonValuta", table: "#salesTableValuta" },
+        ];
 
-        toggleButton.addEventListener("click", () => {
-          if (salesTable.style.display === "none") {
-            salesTable.style.display = "";
-            toggleButton.textContent = "Sembunyikan";
-          } else {
-            salesTable.style.display = "none";
-            toggleButton.textContent = "Tampilkan";
-          }
+        toggleButtons.forEach(({ button, table }) => {
+          const toggleButton = document.querySelector(button);
+          const salesTable = document.querySelector(table);
+
+          toggleButton.addEventListener("click", () => {
+            if (salesTable.style.display === "none") {
+              salesTable.style.display = "";
+              toggleButton.textContent = "Sembunyikan";
+            } else {
+              salesTable.style.display = "none";
+              toggleButton.textContent = "Tampilkan";
+            }
+          });
         });
       });
-      document.addEventListener("DOMContentLoaded", () => {
-        const toggleButton = document.querySelector("#toggleButtonPembelian");
-        const salesTable = document.querySelector("#salesTablePembelian");
+      const btnPengeluaran = document.getElementById("btnPengeluaran");
+      const inputContainer = document.getElementById("inputContainer");
 
-        toggleButton.addEventListener("click", () => {
-          if (salesTable.style.display === "none") {
-            salesTable.style.display = "";
-            toggleButton.textContent = "Sembunyikan";
-          } else {
-            salesTable.style.display = "none";
-            toggleButton.textContent = "Tampilkan";
-          }
-        });
-      });
-      document.addEventListener("DOMContentLoaded", () => {
-        const toggleButton = document.querySelector("#toggleButtonValuta");
-        const salesTable = document.querySelector("#salesTableValuta");
+      btnPengeluaran.addEventListener("click", () => {
+        for (let i = 0; i < 3; i++) {
+          const newDiv = document.createElement("div");
+          newDiv.className = "d-flex align-items-center mt-1 gap-2";
 
-        toggleButton.addEventListener("click", () => {
-          if (salesTable.style.display === "none") {
-            salesTable.style.display = "";
-            toggleButton.textContent = "Sembunyikan";
-          } else {
-            salesTable.style.display = "none";
-            toggleButton.textContent = "Tampilkan";
-          }
-        });
+          const newInput = document.createElement("input");
+          newInput.type = "text";
+          newInput.className = "form-control nominal";
+          newInput.placeholder = "Masukkan pengeluaran";
+
+          const deleteButton = document.createElement("button");
+          deleteButton.type = "button";
+          deleteButton.className = "btn btn-danger btn-sm";
+          deleteButton.textContent = "Hapus";
+
+          deleteButton.addEventListener("click", () => {
+            inputContainer.removeChild(newDiv);
+          });
+
+          newDiv.appendChild(newInput);
+          newDiv.appendChild(deleteButton);
+
+          inputContainer.appendChild(newDiv);
+        }
       });
     </script>
   </body>

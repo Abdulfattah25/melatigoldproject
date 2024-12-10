@@ -114,6 +114,17 @@ main {
 table tbody {
   font-size: 0.8rem;
 }
+.custom-table th,
+.custom-table td {
+  padding: 5px;
+  font-size: 0.8rem;
+}
+
+.custom-table input, .jenisPengeluaran input {
+  padding: 4px;
+  font-size: 0.8rem;
+}
+
 aside {
   width: 15%;
   background: var(--warna);

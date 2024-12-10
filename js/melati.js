@@ -292,3 +292,22 @@ $(document).ready(function () {
 
 //Script harga rata-rata penjualan
 
+ // script menyembunyikan tabel
+  // Ambil elemen tombol dan tabel
+  const toggleButton = document.getElementById("toggleButton");
+  const salesTable = document.getElementById("salesTable");
+
+  // Tambahkan event listener pada tombol
+  salesTable.style.display = ""; // Tabel ditampilkan secara default
+
+  // Tambahkan event listener pada tombol
+  toggleButton.addEventListener("click", () => {
+    // Periksa apakah tabel sedang ditampilkan
+    if (salesTable.style.display === "none") {
+      salesTable.style.display = ""; // Tampilkan tabel
+      toggleButton.textContent = "Sembunyikan"; // Ubah teks tombol
+    } else {
+      salesTable.style.display = "none"; // Sembunyikan tabel
+      toggleButton.textContent = "Tampilkan"; // Ubah teks tombol
+    }
+  });

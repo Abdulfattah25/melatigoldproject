@@ -38,7 +38,8 @@ nav {
   padding: 10px;
   position:fixed;
   width: 100%;
-  box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.3)
+  box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.3);
+  z-index: 999;
 }
 .left-nav{
   display: flex;
@@ -110,6 +111,9 @@ main {
   padding: 8px;
 }
 
+table tbody {
+  font-size: 0.8rem;
+}
 aside {
   width: 15%;
   background: var(--warna);
@@ -181,12 +185,13 @@ aside ul ul li {
 
 /*css saldo awal*/
 
-.maintop {
+.maintop, .kasir {
   height: 40px;
   color: #e6e6e6;
   padding: 10px 0 0 10px;
   font-size: 0.85rem;
   background: var(--warna);
+  
 }
 .border {
   background: var(--warna);

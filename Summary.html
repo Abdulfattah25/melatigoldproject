@@ -42,112 +42,404 @@
           </a>
         </div>
         <div class="left-nav">
-          <div class=""><span id="tanggal" class="font-weight-bold"></span></div>
-        <div class="dropdown">
-          <button
-            class="btn btn-secondary dropdown-toggle akun"
-            type="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            K
-          </button>
-          <ul class="dropdown-menu">
-            <li><span><i class="fa-solid fa-key opacity-75"></i></span><button class="dropdown-item" type="button" >Ganti Password</button></li>
-            <li><span><i class="fa-solid fa-gears opacity-75"></i></span><button class="dropdown-item" type="button">Pengaturan Printer</button></li>
-            <li><span><i class="fa-solid fa-download opacity-75"></i></span><button class="dropdown-item" type="button">Unduh Konektor Printer</button></li>
-            <li><button class="dropdown-item" type="button">Logout</button></li>
-          </ul>
+          <div class="">
+            <span id="tanggal" class="font-weight-bold"></span>
+          </div>
+          <div class="dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle akun"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              K
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <span><i class="fa-solid fa-key opacity-75"></i></span
+                ><button class="dropdown-item" type="button">
+                  Ganti Password
+                </button>
+              </li>
+              <li>
+                <span><i class="fa-solid fa-gears opacity-75"></i></span
+                ><button class="dropdown-item" type="button">
+                  Pengaturan Printer
+                </button>
+              </li>
+              <li>
+                <span><i class="fa-solid fa-download opacity-75"></i></span
+                ><button class="dropdown-item" type="button">
+                  Unduh Konektor Printer
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button">Logout</button>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
       </nav>
     </header>
     <main>
       <div class="mainbar">
-        <h5>Laporan Kasir Melati Young</h5>
+        <h5>Input Data Kasir Melati Young</h5>
         <div class="maintop">
-            <p>Laporan  Kasir</p>
+          <p>Input Data</p>
         </div>
         <div class="inputsa2">
-            <form class="row g-3">
-                <div class="col-md-3">
-                    <label for="inputsld" class="form-label">Masukkan Saldo</label>
-                    <input type="text" class="form-control" id="inputsld" placeholder="masukkan saldo awal">
-                </div>
-                <div class="col-md-3">
-                  <label for="inputsld" class="form-label">Masukkan Penjualan</label>
-                  <select class="form-select form-select-sm mb-2" aria-label=".form-select-sm example">
-                      <option selected>Pilih Kategori</option>
-                      <option value="1">Muda</option>
-                      <option value="2">Hala</option>
-                  </select>
-                  <input type="text" class="form-control" id="inputsld" placeholder="masukkan penjualan manual">
-              </div>
-              <div class="col-md-3">
-                <label for="inputsld" class="form-label">Masukkan Pembelian</label>
-                <select class="form-select form-select-sm mb-2" aria-label=".form-select-sm example">
-                    <option selected>Pilih Kategori</option>
-                    <option value="1">Kadar Tua</option>
-                    <option value="2">Leburan Tua</option>
-                    <option value="2">kadar Muda</option>
-                    <option value="2">Leburan Muda</option>
-                    <option value="2">Hapus Kode</option>
-                    <option value="2">LM</option>
-                </select>
-                <input type="text" class="form-control" id="inputsld" placeholder="jenis barang">
-                <input type="text" class="form-control" id="inputsld" placeholder="berat barang">
-                <input type="text" class="form-control" id="inputsld" placeholder="harga beli">
-            </div>
+          <form class="row g-6">
             <div class="col-md-3">
-              <label for="inputsld" class="form-label">Masukkan Valuta</label>
-              <select class="form-select form-select-sm mb-2" aria-label=".form-select-sm example">
-                  <option selected>Pilih Kategori</option>
-                  <option value="1">MC</option>
-                  <option value="2">BCA</option>
-                  <option value="2">BRI</option>
-                  <option value="2">BNI</option>
-                  <option value="2">MANDIRI</option>
-                  <option value="2">SWITCHING</option>
-                  <option value="2">CC BCA</option>
-                  <option value="2">CC BRI</option>
-                  <option value="2">CC BNI</option>
-                  <option value="2">CC MANDIRI</option>
+              <label for="inputsld" class="form-label">Masukkan Saldo</label>
+              <select
+                class="form-select form-select-sm mb-2"
+                aria-label=".form-select-sm example"
+              >
+                <option selected>Pilih Kategori</option>
+                <option value="1">Saldo Awal</option>
+                <option value="2">Tambah Saldo</option>
               </select>
-              <input type="text" class="form-control" id="inputsld" placeholder="masukkan valuta">
+              <input
+                type="text"
+                class="form-control"
+                id="inputsld"
+                placeholder="masukkan saldo awal"
+              />
+            </div>
+          </form>
+          <form action="">
+            <label for="inputsld" class="form-label">Masukkan Penjualan</label>
+            <table class="table table-bordered">
+              <thead class="table">
+                <tr>
+                  <th>Penjualan</th>
+                  <th>Harga</th>
+                  <th>Berat</th>
+                  <th>Harga Rata-rata</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Perhiasan Muda</td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="hargaMuda"
+                      placeholder="Masukkan harga"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="beratMuda"
+                      placeholder="Masukkan berat"
+                    />
+                  </td>
+                  <td id="avgMuda"></td>
+                </tr>
+                <tr>
+                  <td>Hala</td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="hargaHala"
+                      placeholder="Masukkan harga"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="beratHala"
+                      placeholder="Masukkan berat"
+                    />
+                  </td>
+                  <td id="avgHala"></td>
+                </tr>
+                <tr>
+                  <td>Manual</td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="hargaManual"
+                      placeholder="Masukkan harga"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="beratManual"
+                      placeholder="Masukkan berat"
+                    />
+                  </td>
+                  <td id="avgManual"></td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
+          <form action="">
+            <label for="inputsld" class="form-label">Masukkan Pembelian</label>
+            <table class="table table-bordered">
+              <thead class="table">
+                <tr>
+                  <th>Pembelian</th>
+                  <th>Harga</th>
+                  <th>Berat</th>
+                  <th>Harga Rata-rata</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Kadar Tua</td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="hargaMuda"
+                      placeholder="Masukkan harga"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="beratMuda"
+                      placeholder="Masukkan berat"
+                    />
+                  </td>
+                  <td id="avgMuda"></td>
+                </tr>
+                <tr>
+                  <td>Leburan Tua</td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="hargaHala"
+                      placeholder="Masukkan harga"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="beratHala"
+                      placeholder="Masukkan berat"
+                    />
+                  </td>
+                  <td id="avgHala"></td>
+                </tr>
+                <tr>
+                  <td>Kadar Muda</td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="hargaManual"
+                      placeholder="Masukkan harga"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="beratManual"
+                      placeholder="Masukkan berat"
+                    />
+                  </td>
+                  <td id="avgManual"></td>
+                </tr>
+                <tr>
+                  <td>Leburan Muda</td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="hargaManual"
+                      placeholder="Masukkan harga"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="beratManual"
+                      placeholder="Masukkan berat"
+                    />
+                  </td>
+                  <td id="avgManual"></td>
+                </tr>
+                <tr>
+                  <td>Hapus Kode</td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="hargaManual"
+                      placeholder="Masukkan harga"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="beratManual"
+                      placeholder="Masukkan berat"
+                    />
+                  </td>
+                  <td id="avgManual"></td>
+                </tr>
+                <tr>
+                  <td>Logam Mulia</td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="hargaManual"
+                      placeholder="Masukkan harga"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="beratManual"
+                      placeholder="Masukkan berat"
+                    />
+                  </td>
+                  <td id="avgManual"></td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
+          <form action="">
+              <label for="inputsld" class="form-label">Masukkan Valuta</label>
+              <table class="table table-bordered">
+                <thead class="table">
+                  <tr>
+                    <th>Jenis Valuta</th>
+                    <th>Harga</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>MC</td>
+                    <td>
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="hargaMuda"
+                        placeholder="Masukkan harga"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>BCA</td>
+                    <td>
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="hargaMuda"
+                        placeholder="Masukkan harga"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>BRI</td>
+                    <td>
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="hargaMuda"
+                        placeholder="Masukkan harga"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>BNI</td>
+                    <td>
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="hargaMuda"
+                        placeholder="Masukkan harga"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>MANDIRI</td>
+                    <td>
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="hargaMuda"
+                        placeholder="Masukkan harga"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>SWITCH</td>
+                    <td>
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="hargaMuda"
+                        placeholder="Masukkan harga"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CREDIT CARD</td>
+                    <td>
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="hargaMuda"
+                        placeholder="Masukkan harga"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+          </form>
+          <form class="row g-3">
+            <div class="col-md-6">
+              <label for="inputsld" class="form-label"
+                >Masukkan pengeluaran</label
+              >
+              <select
+                class="form-select form-select-sm mb-2"
+                aria-label=".form-select-sm example"
+              >
+                <option selected>Pilih Kategori</option>
+                <option value="1">Kembali Shopee</option>
+                <option value="2">Shopee</option>
+                <option value="2">Transfer</option>
+                <option value="2">Setor</option>
+                <option value="2">Belanja</option>
+                <option value="2">Ongkir</option>
+                <option value="2">Belanja Koko</option>
+                <option value="2">Belanja Kopi</option>
+              </select>
+              <input
+                type="text"
+                class="form-control"
+                id="inputsld"
+                placeholder="masukkan pengeluaran"
+              />
+            </div>
+          </form>
+          <form class="row g-3"></form>
+          <div class="col-12">
+            <button type="submit" class="btn btn-success btn-sm">Simpan</button>
           </div>
-            </form>
-            <form class="row g-3">
-                <div class="col-md-6">
-                  <label for="inputsld" class="form-label"
-                    >Masukkan pengeluaran</label
-                  >
-                  <select
-                    class="form-select form-select-sm mb-2"
-                    aria-label=".form-select-sm example">
-                    <option selected>Pilih Kategori</option>
-                    <option value="1">Kembali Shopee</option>
-                    <option value="2">Shopee</option>
-                    <option value="2">Transfer</option>
-                    <option value="2">Setor</option>
-                    <option value="2">Belanja</option>
-                    <option value="2">Ongkir</option>
-                    <option value="2">Belanja Koko</option>
-                    <option value="2">Belanja Kopi</option>
-                  </select>
-                  <input
-                    type="text" class="form-control" id="inputsld" placeholder="masukkan pengeluaran"/>
-                </div>
-              </form>
-              <form class="row g-3">
-               
-            </form>
-              <div class="col-12">
-                <button type="submit" class="btn btn-success btn-sm">
-                  Simpan
-                </button>
-              </div>
-        </div> 
-    </div>
+        </div>
+      </div>
       <aside class="sidebar">
         <ul>
           <li>
@@ -157,13 +449,20 @@
             <a href="#" class="inpt-btn" data-target="inpt-show"
               >Input Data<span class="fas fa-caret-down first"></span
             ></a>
-            <ul class="inpt-show" id="inpt-show">
+            <ul class="inpt-btn" id="inpt-show">
+              <li><a href="#">Aksesoris Perhiasan</a></li>
               <li><a href="dataServis.html">Data Servis</a></li>
-              <li><a href="penjualanManual.html">Penjualan Manual</a></li>
-              <li><a href="PenjualanKotak.html">Penjualan Kotak</a></li>
-              <li><a href="#">Laporan Kasir</a></li>
+              <li><a href="Summary.html">Data Kasir</a></li>
             </ul>
           </li>
+          <li>
+            <a href="#" class="sell-btn" data-target="sell-show"
+              >Penjualan<span class="fas fa-caret-down first"></span
+            ></a>
+            <ul class="sell-btn" id="sell-show">
+              <li><a href="penjualanManual.html">Penjualan Manual</a></li>
+              <li><a href="penjualanKotak.html">Penjualan Kotak</a></li>
+            </ul>
           </li>
           <li>
             <a href="#" class="utlt-btn" data-target="utlt-show"
@@ -175,16 +474,37 @@
           </li>
           <li>
             <a href="#" class="lprn-btn" data-target="lprn-show"
-              >Laporan
-              <span class="fas fa-caret-down third"></span>
-            </a>
+              >Laporan<span class="fas fa-caret-down third"></span
+            ></a>
             <ul class="lprn-show" id="lprn-show">
-              <li><a href="#">Grand Total</a></li>
+              <li><a href="#">Laporan Aksesoris</a></li>
+              <li><a href="#">Laporan Data Servis</a></li>
+              <li><a href="#">Laporan Penjualan</a></li>
+              <li><a href="#">Laporan Kasir</a></li>
             </ul>
           </li>
         </ul>
       </aside>
     </main>
     <script src="js/melati.js"></script>
+    <script>
+      // Hitung harga rata-rata untuk setiap baris
+      function calculateAverage() {
+          let hargaMuda = parseFloat(document.getElementById('hargaMuda').innerText);
+          let beratMuda = parseFloat(document.getElementById('beratMuda').innerText);
+          document.getElementById('avgMuda').innerText = (hargaMuda / beratMuda).toFixed(2);
+
+          let hargaHala = parseFloat(document.getElementById('hargaHala').innerText);
+          let beratHala = parseFloat(document.getElementById('beratHala').innerText);
+          document.getElementById('avgHala').innerText = (hargaHala / beratHala).toFixed(2);
+
+          let hargaManual = parseFloat(document.getElementById('hargaManual').innerText);
+          let beratManual = parseFloat(document.getElementById('beratManual').innerText);
+          document.getElementById('avgManual').innerText = (hargaManual / beratManual).toFixed(2);
+      }
+
+      // Panggil fungsi saat halaman dimuat
+      calculateAverage();
+  </script>
   </body>
 </html>

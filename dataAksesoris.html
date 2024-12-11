@@ -84,34 +84,63 @@
               </div>
               <div class="col-md-4">
                 <label for="noServis" class="form-label">Jenis Aksesoris</label>
-                <input type="text" class="form-control" id="noServis" placeholder="Masukkan No Servis">
-              </div>
-              <div class="col-md-4">
-                <label for="sales" class="form-label">Sales</label>
-                <input type="text" class="form-control" id="sales" placeholder="Masukkan Sales">
+                <div class="d-flex jenisPengeluaran justify-content-between gap-1">                   
+                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                      <option selected>Pilih Kategori</option>
+                      <option value="1">Kotak Perhiasan</option>
+                      <option value="2">Aksesoris Perhiasan</option>                     
+                    </select>
+                   
+                  </div>
               </div>
             </form>
           </div>
           <div class="dataBarang border-bottom pt-3 pb-1">
-            <div class="d-flex justify-content-between mb-2">
+            <div class="d-flex justify-content-between">
               <h6>Detail Barang</h6>
-             
+              <button type="button" class="btn btn-outline-primary" id="btnTambahAksesoris">Tambah</button>
             </div>
-            <table class="table" id="tableAksesoris">
+            <table class="table" id="tableTambahAksesoris">
               <thead class="table">
                 <tr>
-                  <th>ID</th>
+                  <th>Kode Barang</th>
                   <th>Nama Barang</th>
                   <th>Jumlah</th>
-                  <th>Harga</th>
+                  <th>Harga Satuan</th>
+                  <th>Total Harga</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><input type="text" class="form-control" placeholder="ID"></td>
+                  <td><select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected>Pilih Kode Kotak</option>
+                    <option value="1">K30</option>
+                    <option value="2">K40</option>
+                    <option value="3">K50 CINCIN</option>
+                    <option value="4">K50 KALUNG</option>
+                    <option value="5">K60</option>
+                    <option value="6">K70 GELANG</option>                   
+                    <option value="7">K70 GIFTBOX</option>
+                    <option value="8">K80</option>
+                    <option value="9">K150</option>
+                    <option value="10">K200</option>
+                  </select></td>
+                  <td><select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected>Pilih Kode Aksesoris</option>
+                    <option value="1">LS</option>
+                    <option value="2">LB</option>
+                    <option value="3">LL</option>
+                    <option value="4">LLM</option>
+                    <option value="5">BT</option>
+                    <option value="6">SL</option>                   
+                    <option value="7">LAP</option>
+                    <option value="2">CR</option>
+                    <option value="2">TG</option>
+                  </select></td>
                   <td><input type="text" class="form-control" placeholder="Nama Barang"></td>
                   <td><input type="text" class="form-control" placeholder="Jumlah"></td>
-                  <td><input type="text" class="form-control" placeholder="Harga"></td>
+                  <td><input type="text" class="form-control" placeholder="Harga Per Pcs"></td>
+                  <td><input type="text" class="form-control" placeholder="Total Harga"></td>
                 </tr>
               </tbody>
             </table>
@@ -157,6 +186,60 @@
         </ul>
       </aside>
     </main>
+    <script>
+        document.getElementById("btnTambahAksesoris").addEventListener("click", function () {
+  // Ambil tbody dari tabel
+  const tbody = document.querySelector("#tableTambahAksesoris tbody");
+  // Buat elemen <tr> baru
+  const newRow = document.createElement("tr");
+  // Tambahkan kolom ke dalam baris baru
+  newRow.innerHTML = `
+                 <td><select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected>Pilih Kode Kotak</option>
+                    <option value="1">K30</option>
+                    <option value="2">K40</option>
+                    <option value="3">K50 CINCIN</option>
+                    <option value="4">K50 KALUNG</option>
+                    <option value="5">K60</option>
+                    <option value="6">K70 GELANG</option>                   
+                    <option value="7">K70 GIFTBOX</option>
+                    <option value="8">K80</option>
+                    <option value="9">K150</option>
+                    <option value="10">K200</option>
+                  </select></td>
+                  <td><select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected>Pilih Kode Aksesoris</option>
+                    <option value="1">LS</option>
+                    <option value="2">LB</option>
+                    <option value="3">LL</option>
+                    <option value="4">LLM</option>
+                    <option value="5">BT</option>
+                    <option value="6">SL</option>                   
+                    <option value="7">LAP</option>
+                    <option value="2">CR</option>
+                    <option value="2">TG</option>
+                  </select></td>
+                  <td><input type="text" class="form-control" placeholder="Nama Barang"></td>
+                  <td><input type="text" class="form-control" placeholder="Jumlah"></td>
+                  <td><input type="text" class="form-control" placeholder="Harga Per Pcs"></td>
+                  <td><input type="text" class="form-control" placeholder="Total Harga"></td>
+                  <td>
+                    <button class="btn btn-danger btn-sm btnHapus">
+                        <i class="bi bi-x"></i>
+                    </button>
+                  </td>
+  `;
+  // Tambahkan baris baru ke dalam tbody
+  tbody.appendChild(newRow);
+});
+document.querySelector("#tableTambahAksesoris").addEventListener("click", function (e) {
+  if (e.target.closest(".btnHapus")) {
+      const row = e.target.closest("tr");
+      row.remove(); // Hapus baris tabel
+  }
+});
+
+    </script>
     <script src="js/melati.js"></script>
   </body>
 </html>

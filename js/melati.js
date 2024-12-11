@@ -268,8 +268,9 @@ document.getElementById("btnTambah").addEventListener("click", function () {
   tbody.appendChild(newRow);
 });
 
+
 // Event delegation untuk menghapus baris
-document.querySelector("#tableBarang, #tableKotak, #tableManual").addEventListener("click", function (e) {
+document.querySelector("#tableBarang, #tableKotak, #tableManual, #tableTambahAksesoris").addEventListener("click", function (e) {
   if (e.target.closest(".btnHapus")) {
       const row = e.target.closest("tr");
       row.remove(); // Hapus baris tabel

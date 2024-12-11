@@ -68,9 +68,9 @@
     </header>
     <main>
       <div class="mainbar">
-        <h4>Servis Barang</h4>
+        <h4>Aksesoris Perhiasan</h4>
         <div class="maintop">
-          <p>Tambah Data Servis</p>
+          <p>Tambah Aksesoris</p>
         </div>
         <div class="container">
           <div class="dataSales border-bottom pb-5">
@@ -83,7 +83,7 @@
               </div>
               </div>
               <div class="col-md-4">
-                <label for="noServis" class="form-label">No Servis</label>
+                <label for="noServis" class="form-label">Jenis Aksesoris</label>
                 <input type="text" class="form-control" id="noServis" placeholder="Masukkan No Servis">
               </div>
               <div class="col-md-4">
@@ -92,38 +92,18 @@
               </div>
             </form>
           </div>
-          <div class="dataCust border-bottom pb-5">
-            <form class="row g-3 pt-2">
-              <div class="col-md-4">
-                <label for="namaPelanggan" class="form-label">Nama Pelanggan</label>
-                <input type="text" class="form-control" id="namaPelanggan" placeholder="Masukkan nama pelanggan">
-              </div>
-              <div class="col-md-4">
-                <label for="noHp" class="form-label">No Hp Pelanggan</label>
-                <input type="text" class="form-control" id="noHp" placeholder="Masukkan nomor HP">
-              </div>
-              <div class="col-md-4">
-                <label for="alamatPelanggan" class="form-label">Alamat Pelanggan</label>
-                <input type="text" class="form-control" id="alamatPelanggan" placeholder="Masukkan alamat pelanggan">
-              </div>
-            </form>
-          </div>
-          <div class="dataBarang border-bottom pt-3 pb-5">
+          <div class="dataBarang border-bottom pt-3 pb-1">
             <div class="d-flex justify-content-between mb-2">
               <h6>Detail Barang</h6>
-              <button id="btnTambah" class="btn btn-primary">Tambah</button>
+             
             </div>
-            <table class="table" id="tableBarang">
+            <table class="table" id="tableAksesoris">
               <thead class="table">
                 <tr>
                   <th>ID</th>
                   <th>Nama Barang</th>
                   <th>Jumlah</th>
-                  <th>Kadar</th>
-                  <th>Berat</th>
-                  <th>Ongkos</th>
-                  <th>Keterangan Servis</th>
-                  <th>Aksi</th>
+                  <th>Harga</th>
                 </tr>
               </thead>
               <tbody>
@@ -131,38 +111,10 @@
                   <td><input type="text" class="form-control" placeholder="ID"></td>
                   <td><input type="text" class="form-control" placeholder="Nama Barang"></td>
                   <td><input type="text" class="form-control" placeholder="Jumlah"></td>
-                  <td><input type="text" class="form-control" placeholder="Kadar"></td>
-                  <td><input type="text" class="form-control" placeholder="Berat"></td>
-                  <td><input type="text" class="form-control" placeholder="Ongkos"></td>
-                  <td><input type="text" class="form-control" placeholder="Keterangan"></td>
-                  <td>
-                    <button class="btn btn-danger btn-sm btnHapus">
-                        <i class="bi bi-x"></i>
-                    </button>
-                </td>
+                  <td><input type="text" class="form-control" placeholder="Harga"></td>
                 </tr>
               </tbody>
             </table>
-
-          </div>
-          <div class="Pembayaran">
-            <form class="row g-3 pt-2">
-            <div class="col-md-3">
-              <label for="metodeBayar" class="form-label">Metode Pembayaran</label>
-              <select class="form-select form-select-sm mb-2" aria-label=".form-select-sm example">
-                  <option value="1">Tunai</option>
-                  <option value="2">DP</option>
-              </select>
-          </div>
-          <div class="col-md-4">
-            <label for="totalOngkos" class="form-label">Total Ongkos</label>
-            <input type="text" class="form-control" id="totalOngkos" placeholder="Masukkan Total Ongkos">
-          </div>
-          <div class="col-md-4">
-            <label for="keterangan" class="form-label">Keterangan</label>
-            <input type="text" class="form-control" id="keterangan" placeholder="Keterangan">
-          </div>
-            </form>
           </div>
           <button class="btn btn-primary mt-3">Simpan Data</button>
           </div>
@@ -178,7 +130,7 @@
               >Input Data<span class="fas fa-caret-down first"></span
             ></a>
             <ul class="inpt-btn" id="inpt-show">
-              <li><a href="dataAksesoris.html">Aksesoris Perhiasan</a></li>
+              <li><a href="#">Aksesoris Perhiasan</a></li>
               <li><a href="dataServis.html">Data Servis</a></li>
               <li><a href="Summary.html">Data Kasir</a></li>
             </ul>

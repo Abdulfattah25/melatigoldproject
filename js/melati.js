@@ -290,7 +290,6 @@ $(document).ready(function () {
   });
 });
 
-
-
+//Script harga rata-rata penjualan
 
  

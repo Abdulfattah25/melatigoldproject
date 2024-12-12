@@ -17,7 +17,10 @@
       crossorigin="anonymous"
     />
     <!-- Datepicker CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="Project1.css" />
     <link rel="stylesheet" href="fontawesome/css/all.css" />
     <script
@@ -30,7 +33,7 @@
       integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
       crossorigin="anonymous"
     ></script>
-    <script src="js/jquery-3.6.3.min.js"></script>    
+    <script src="js/jquery-3.6.3.min.js"></script>
     <!-- Datepicker JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
     <title>Data Servis</title>
@@ -47,23 +50,40 @@
         </div>
         <div class="left-nav">
           <div class=""><span id="tgl" class="font-weight-bold"></span></div>
-        <div class="dropdown">
-          <button
-            class="btn btn-secondary dropdown-toggle akun"
-            type="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            K
-          </button>
-          <ul class="dropdown-menu">
-            <li><span><i class="fa-solid fa-key opacity-75"></i></span><button class="dropdown-item" type="button" >Ganti Password</button></li>
-            <li><span><i class="fa-solid fa-gears opacity-75"></i></span><button class="dropdown-item" type="button">Pengaturan Printer</button></li>
-            <li><span><i class="fa-solid fa-download opacity-75"></i></span><button class="dropdown-item" type="button">Unduh Konektor Printer</button></li>
-            <li><button class="dropdown-item" type="button">Logout</button></li>
-          </ul>
+          <div class="dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle akun"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              K
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <span><i class="fa-solid fa-key opacity-75"></i></span
+                ><button class="dropdown-item" type="button">
+                  Ganti Password
+                </button>
+              </li>
+              <li>
+                <span><i class="fa-solid fa-gears opacity-75"></i></span
+                ><button class="dropdown-item" type="button">
+                  Pengaturan Printer
+                </button>
+              </li>
+              <li>
+                <span><i class="fa-solid fa-download opacity-75"></i></span
+                ><button class="dropdown-item" type="button">
+                  Unduh Konektor Printer
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button">Logout</button>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
       </nav>
     </header>
     <main>
@@ -78,27 +98,48 @@
               <div class="col-md-4">
                 <label for="tanggal" class="form-label">Tanggal</label>
                 <div class="d-flex justify-content-center align-items-center">
-                <input type="text" class="form-control" id="tanggal" placeholder="Masukkan tanggal">
-                <i class="fa-solid fa-calendar-days text-light border rounded opacity-75" id="calendarIcon" style="cursor: pointer;"></i>
-              </div>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="tanggal"
+                    placeholder="Masukkan tanggal"
+                  />
+                  <i
+                    class="fa-solid fa-calendar-days text-light border rounded opacity-75"
+                    id="calendarIcon"
+                    style="cursor: pointer"
+                  ></i>
+                </div>
               </div>
               <div class="col-md-4">
                 <label for="noServis" class="form-label">Jenis Aksesoris</label>
-                <div class="d-flex jenisPengeluaran justify-content-between gap-1">                   
-                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                      <option selected>Pilih Kategori</option>
-                      <option value="1">Kotak Perhiasan</option>
-                      <option value="2">Aksesoris Perhiasan</option>                     
-                    </select>
-                   
-                  </div>
+                <div
+                  class="d-flex jenisPengeluaran justify-content-between gap-1"
+                >
+                  <select
+                    class="form-select form-select-sm"
+                    aria-label=".form-select-sm example"
+                  >
+                    <option selected>Pilih Kategori</option>
+                    <option id="jenis-kotak" value="1">Kotak Perhiasan</option>
+                    <option id="jenis-aksesoris" value="2">
+                      Aksesoris Perhiasan
+                    </option>
+                  </select>
+                </div>
               </div>
             </form>
           </div>
           <div class="dataBarang border-bottom pt-3 pb-1">
             <div class="d-flex justify-content-between">
               <h6>Detail Barang</h6>
-              <button type="button" class="btn btn-outline-primary" id="btnTambahAksesoris">Tambah</button>
+              <button
+                type="button"
+                class="btn btn-outline-primary"
+                id="btnTambahAksesoris"
+              >
+                Tambah
+              </button>
             </div>
             <table class="table" id="tableTambahAksesoris">
               <thead class="table">
@@ -112,43 +153,51 @@
               </thead>
               <tbody>
                 <tr>
-                  <td><select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    <option selected>Pilih Kode Kotak</option>
-                    <option value="1">K30</option>
-                    <option value="2">K40</option>
-                    <option value="3">K50 CINCIN</option>
-                    <option value="4">K50 KALUNG</option>
-                    <option value="5">K60</option>
-                    <option value="6">K70 GELANG</option>                   
-                    <option value="7">K70 GIFTBOX</option>
-                    <option value="8">K80</option>
-                    <option value="9">K150</option>
-                    <option value="10">K200</option>
-                  </select></td>
-                  <td><select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    <option selected>Pilih Kode Aksesoris</option>
-                    <option value="1">LS</option>
-                    <option value="2">LB</option>
-                    <option value="3">LL</option>
-                    <option value="4">LLM</option>
-                    <option value="5">BT</option>
-                    <option value="6">SL</option>                   
-                    <option value="7">LAP</option>
-                    <option value="2">CR</option>
-                    <option value="2">TG</option>
-                  </select></td>
-                  <td><input type="text" class="form-control" placeholder="Nama Barang"></td>
-                  <td><input type="text" class="form-control" placeholder="Jumlah"></td>
-                  <td><input type="text" class="form-control" placeholder="Harga Per Pcs"></td>
-                  <td><input type="text" class="form-control" placeholder="Total Harga"></td>
+                  <td>
+                    <select
+                      id="kode-barang"
+                      class="form-select form-select-sm"
+                      aria-label=".form-select-sm example"
+                    >
+                      <!-- Opsi akan diisi oleh JavaScript -->
+                    </select>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Nama Barang"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Jumlah"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Harga Per Pcs"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Total Harga"
+                    />
+                  </td>
                 </tr>
               </tbody>
             </table>
           </div>
           <button class="btn btn-primary mt-3">Simpan Data</button>
-          </div>
         </div>
       </div>
+
       <aside class="sidebar">
         <ul>
           <li>
@@ -164,18 +213,27 @@
               <li><a href="Summary.html">Data Kasir</a></li>
             </ul>
           </li>
-          <li><a href="#" class="sell-btn" data-target="sell-show">Penjualan<span class="fas fa-caret-down first"></span></a>
+          <li>
+            <a href="#" class="sell-btn" data-target="sell-show"
+              >Penjualan<span class="fas fa-caret-down first"></span
+            ></a>
             <ul class="sell-btn" id="sell-show">
               <li><a href="penjualanManual.html">Penjualan Manual</a></li>
               <li><a href="penjualanKotak.html">Penjualan Kotak</a></li>
             </ul>
           </li>
-          <li><a href="#" class="utlt-btn" data-target="utlt-show">Utility<span class="fas fa-caret-down second"></span></a>
+          <li>
+            <a href="#" class="utlt-btn" data-target="utlt-show"
+              >Utility<span class="fas fa-caret-down second"></span
+            ></a>
             <ul class="utlt-show" id="utlt-show">
               <li><a href="#">Edit Data</a></li>
             </ul>
           </li>
-          <li><a href="#" class="lprn-btn" data-target="lprn-show">Laporan<span class="fas fa-caret-down third"></span></a>
+          <li>
+            <a href="#" class="lprn-btn" data-target="lprn-show"
+              >Laporan<span class="fas fa-caret-down third"></span
+            ></a>
             <ul class="lprn-show" id="lprn-show">
               <li><a href="#">Laporan Aksesoris</a></li>
               <li><a href="#">Laporan Data Servis</a></li>
@@ -187,57 +245,152 @@
       </aside>
     </main>
     <script>
-        document.getElementById("btnTambahAksesoris").addEventListener("click", function () {
-  // Ambil tbody dari tabel
-  const tbody = document.querySelector("#tableTambahAksesoris tbody");
-  // Buat elemen <tr> baru
-  const newRow = document.createElement("tr");
-  // Tambahkan kolom ke dalam baris baru
-  newRow.innerHTML = `
-                 <td><select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    <option selected>Pilih Kode Kotak</option>
-                    <option value="1">K30</option>
-                    <option value="2">K40</option>
-                    <option value="3">K50 CINCIN</option>
-                    <option value="4">K50 KALUNG</option>
-                    <option value="5">K60</option>
-                    <option value="6">K70 GELANG</option>                   
-                    <option value="7">K70 GIFTBOX</option>
-                    <option value="8">K80</option>
-                    <option value="9">K150</option>
-                    <option value="10">K200</option>
-                  </select></td>
-                  <td><select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    <option selected>Pilih Kode Aksesoris</option>
-                    <option value="1">LS</option>
-                    <option value="2">LB</option>
-                    <option value="3">LL</option>
-                    <option value="4">LLM</option>
-                    <option value="5">BT</option>
-                    <option value="6">SL</option>                   
-                    <option value="7">LAP</option>
-                    <option value="2">CR</option>
-                    <option value="2">TG</option>
-                  </select></td>
-                  <td><input type="text" class="form-control" placeholder="Nama Barang"></td>
-                  <td><input type="text" class="form-control" placeholder="Jumlah"></td>
-                  <td><input type="text" class="form-control" placeholder="Harga Per Pcs"></td>
-                  <td><input type="text" class="form-control" placeholder="Total Harga"></td>
-                  <td>
-                    <button class="btn btn-danger btn-sm btnHapus">
-                        <i class="bi bi-x"></i>
-                    </button>
-                  </td>
-  `;
-  // Tambahkan baris baru ke dalam tbody
-  tbody.appendChild(newRow);
+  //     document
+  //       .getElementById("btnTambahAksesoris")
+  //       .addEventListener("click", function () {
+  //         // Ambil tbody dari tabel
+  //         const tbody = document.querySelector("#tableTambahAksesoris tbody");
+  //         // Buat elemen <tr> baru
+  //         const newRow = document.createElement("tr");
+  //         // Tambahkan kolom ke dalam baris baru
+  //         newRow.innerHTML = `
+  //                <td><select class="form-select form-select-sm" aria-label=".form-select-sm example">
+  //                   <option selected>Pilih Kode Kotak</option>
+  //                   <option value="1">K30</option>
+  //                   <option value="2">K40</option>
+  //                   <option value="3">K50 CINCIN</option>
+  //                   <option value="4">K50 KALUNG</option>
+  //                   <option value="5">K60</option>
+  //                   <option value="6">K70 GELANG</option>                   
+  //                   <option value="7">K70 GIFTBOX</option>
+  //                   <option value="8">K80</option>
+  //                   <option value="9">K150</option>
+  //                   <option value="10">K200</option>
+  //                 </select></td>
+  //                 <td><select class="form-select form-select-sm" aria-label=".form-select-sm example">
+  //                   <option selected>Pilih Kode Aksesoris</option>
+  //                   <option value="1">LS</option>
+  //                   <option value="2">LB</option>
+  //                   <option value="3">LL</option>
+  //                   <option value="4">LLM</option>
+  //                   <option value="5">BT</option>
+  //                   <option value="6">SL</option>                   
+  //                   <option value="7">LAP</option>
+  //                   <option value="2">CR</option>
+  //                   <option value="2">TG</option>
+  //                 </select></td>
+  //                 <td><input type="text" class="form-control" placeholder="Nama Barang"></td>
+  //                 <td><input type="text" class="form-control" placeholder="Jumlah"></td>
+  //                 <td><input type="text" class="form-control" placeholder="Harga Per Pcs"></td>
+  //                 <td><input type="text" class="form-control" placeholder="Total Harga"></td>
+  //                 <td>
+  //                   <button class="btn btn-danger btn-sm btnHapus">
+  //                       <i class="bi bi-x"></i>
+  //                   </button>
+  //                 </td>
+  // `;
+  //         // Tambahkan baris baru ke dalam tbody
+  //         tbody.appendChild(newRow);
+  //       });
+  //     document
+  //       .querySelector("#tableTambahAksesoris")
+  //       .addEventListener("click", function (e) {
+  //         if (e.target.closest(".btnHapus")) {
+  //           const row = e.target.closest("tr");
+  //           row.remove(); // Hapus baris tabel
+  //         }
+  //       });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const selectKategori = document.querySelector(".form-select");
+    const kodeBarang = document.getElementById("kode-barang");
+    const btnTambahAksesoris = document.getElementById("btnTambahAksesoris");
+    const tbody = document.querySelector("#tableTambahAksesoris tbody");
+
+    const opsiKotak = [
+        { value: "1", text: "K30" },
+        { value: "2", text: "K40" },
+        { value: "3", text: "K50 CINCIN" },
+        { value: "4", text: "K50 KALUNG" },
+        { value: "5", text: "K60" },
+        { value: "6", text: "K70 GELANG" },
+        { value: "7", text: "K70 GIFTBOX" },
+        { value: "8", text: "K80" },
+        { value: "9", text: "K150" },
+        { value: "10", text: "K200" }
+    ];
+
+    const opsiAksesoris = [
+        { value: "1", text: "LS" },
+        { value: "2", text: "LB" },
+        { value: "3", text: "LL" },
+        { value: "4", text: "LLM" },
+        { value: "5", text: "BT" },
+        { value: "6", text: "SL" },
+        { value: "7", text: "LAP" },
+        { value: "8", text: "CR" },
+        { value: "9", text: "TG" }
+    ];
+
+    const updateOptions = (options) => {
+        kodeBarang.innerHTML = ""; 
+        options.forEach(option => {
+            const opt = document.createElement("option");
+            opt.value = option.value;
+            opt.textContent = option.text;
+            kodeBarang.appendChild(opt);
+        });
+    };
+
+    selectKategori.addEventListener("change", function () {
+        if (this.value === "1") {
+            updateOptions(opsiKotak);
+        } else if (this.value === "2") {
+            updateOptions(opsiAksesoris);
+        } else {
+            kodeBarang.innerHTML = "<option selected>Pilih Kode Barang</option>";
+        }
+    });
+
+    const tambahBaris = (options) => {
+        const tr = document.createElement("tr");
+
+        tr.innerHTML = `
+            <td>
+                <select class="form-select form-select-sm">
+                    ${options.map(option => `<option value="${option.value}">${option.text}</option>`).join("")}
+                </select>
+            </td>
+            <td><input type="text" class="form-control" placeholder="Nama Barang"></td>
+            <td><input type="text" class="form-control" placeholder="Jumlah"></td>
+            <td><input type="text" class="form-control" placeholder="Harga Per Pcs"></td>
+            <td><input type="text" class="form-control" placeholder="Total Harga"></td>
+            <td><button type="button" class="btn btn-danger btn-sm btn-hapus">Hapus</button></td>
+        `;
+
+        tbody.appendChild(tr);
+
+        // Tambahkan event listener ke tombol hapus
+        tr.querySelector(".btn-hapus").addEventListener("click", function () {
+            tbody.removeChild(tr);
+        });
+    };
+
+    btnTambahAksesoris.addEventListener("click", function () {
+        const kategori = selectKategori.value;
+        if (kategori === "1") {
+            tambahBaris(opsiKotak);
+        } else if (kategori === "2") {
+            tambahBaris(opsiAksesoris);
+        } else {
+            alert("Pilih kategori terlebih dahulu!");
+        }
+    });
+
+    updateOptions(opsiKotak);
 });
-document.querySelector("#tableTambahAksesoris").addEventListener("click", function (e) {
-  if (e.target.closest(".btnHapus")) {
-      const row = e.target.closest("tr");
-      row.remove(); // Hapus baris tabel
-  }
-});
+
+
 
     </script>
     <script src="js/melati.js"></script>

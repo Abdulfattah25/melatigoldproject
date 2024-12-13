@@ -11,7 +11,7 @@
 :root {
   --warna : radial-gradient(ellipse at 0% 100%, rgba(104,128,138,0.4) 10%, rgba(138,114,76,0) 40%),
                         linear-gradient(to top, rgba(57,173,219,0.25) 0%, rgba(42,60,87,0.4) 100%),
-                        linear-gradient(135deg, #670d10 0%, #092756 100%);
+                        linear-gradient(135deg, #19325a 0%, #bac5db 100%);
 }
 
 /*css index*/

@@ -91,6 +91,9 @@ align-items: center;
 .boxPj {
   background-color: #f15bb5;
 }
+.boxServis, .boxPk, .boxPj, .report {
+  box-shadow: 1px 1px 7px rgba(0,0,0,9);
+}
 .report {
   background-color: #6eeb83;
 }

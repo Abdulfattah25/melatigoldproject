@@ -289,6 +289,14 @@ $(document).ready(function () {
   $('#calendarIcon').on('click', function () {
       $('#tanggal').datepicker('show'); // Tampilkan Datepicker saat ikon diklik
   });
+  // Mengisi input dengan tanggal hari ini
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); // Bulan dimulai dari 0
+  var yyyy = today.getFullYear();
+  today = yyyy + '-' + mm + '-' + dd; // Format tanggal: yyyy-mm-dd
+
+  $('#tanggal').val(today); // Mengisi nilai input dengan tanggal hari ini
 });
 
 //Script harga rata-rata penjualan

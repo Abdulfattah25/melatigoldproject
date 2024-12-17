@@ -33,7 +33,7 @@
     <script src="js/jquery-3.6.3.min.js"></script>    
     <!-- Datepicker JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-    <title>Penjualan Kotak</title>
+    <title>Penjualan Aksesoris</title>
   </head>
 
   <body>
@@ -68,9 +68,9 @@
     </header>
     <main>
       <div class="mainbar">
-        <h5>Penjualan Kotak</h5>
+        <h5>Penjualan Aksesoris</h5>
         <div class="maintop">
-          <p>Tambah Penjualan Kotak</p>
+          <p>Tambah Penjualan Aksesoris</p>
         </div>
         <div class="container">
           <div class="dataSales border-bottom pb-5">
@@ -116,10 +116,12 @@
             <table class="table" id="tableKotak">
               <thead class="table">
                 <tr>
-                  <th>ID</th>
+                  <th>Kode Aksesoris</th>
                   <th>Nama Barang</th>
                   <th>Jumlah</th>
-                  <th>Harga</th>
+                  <th>Berat</th>
+                  <th>Harga Per Gram</th>
+                  <th>Total Harga</th>
                   <th>Aksi</th>
                 </tr>
               </thead>
@@ -128,7 +130,9 @@
                   <td><input type="text" class="form-control" placeholder="ID"></td>
                   <td><input type="text" class="form-control" placeholder="Nama Barang"></td>
                   <td><input type="number" class="form-control" placeholder="Jumlah"></td>
-                  <td><input type="number" class="form-control" placeholder="Harga"></td>
+                  <td><input type="number" class="form-control" placeholder="Berat"></td>
+                  <td><input type="number" class="form-control" placeholder="Harga Per Gram"></td>
+                  <td><input type="number" class="form-control" placeholder="Total Harga"></td>
                   <td>
                     <button class="btn btn-danger btn-sm btnHapus">
                         <i class="bi bi-x"></i>
@@ -178,7 +182,7 @@
           <li><a href="#" class="sell-btn" data-target="sell-show">Penjualan<span class="fas fa-caret-down first"></span></a>
             <ul class="sell-btn" id="sell-show">
               <li><a href="penjualanManual.html">Penjualan Manual</a></li>
-              <li><a href="penjualanKotak.html">Penjualan Kotak</a></li>
+              <li><a href="penjualanKotak.html">Penjualan Aksesoris</a></li>
             </ul>
           </li>
           <li><a href="#" class="utlt-btn" data-target="utlt-show">Utility<span class="fas fa-caret-down second"></span></a>

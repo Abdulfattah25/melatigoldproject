@@ -196,31 +196,6 @@
   // Menampilkan tanggal di elemen dengan id 'tanggal'
   document.getElementById('tgl').textContent = tanggalFormat;
 
-  //Data Servis
-  document.getElementById("btnTambah").addEventListener("click", function () {
-    // Ambil tbody dari tabel
-    const tbody = document.querySelector("#tableBarang tbody");
-    // Buat elemen <tr> baru
-    const newRow = document.createElement("tr");
-    // Tambahkan kolom ke dalam baris baru
-    newRow.innerHTML = `
-        <td><input type="text" class="form-control" placeholder="ID"></td>
-        <td><input type="text" class="form-control" placeholder="Nama Barang"></td>
-        <td><input type="text" class="form-control" placeholder="Jumlah"></td>
-        <td><input type="text" class="form-control" placeholder="Kadar"></td>
-        <td><input type="text" class="form-control" placeholder="Berat"></td>
-        <td><input type="text" class="form-control" placeholder="Ongkos"></td>
-        <td><input type="text" class="form-control" placeholder="Keterangan"></td>
-        <td>
-                    <button class="btn btn-danger btn-sm btnHapus">
-                        <i class="bi bi-x"></i>
-                    </button>
-          </td>
-    `;
-
-    // Tambahkan baris baru ke dalam tbody
-    tbody.appendChild(newRow);
-});
 
 // Penjualan kotak
 document.getElementById("btnTambah").addEventListener("click", function () {

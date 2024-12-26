@@ -124,6 +124,10 @@ $(document).ready(function () {
   $('#tanggal').val(today); // Mengisi nilai input dengan tanggal hari ini
 });
 
-//Script harga rata-rata penjualan
+// Add click event to logout button
+document.querySelector('button:contains("Logout")').addEventListener('click', function() {
+  sessionStorage.removeItem('isLoggedIn');
+  window.location.href = 'Login.html';
+});
 
  

@@ -36,10 +36,29 @@
     <script src="js/jquery-3.6.3.min.js"></script>
     <!-- Datepicker JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script>
+      // Session check
+      if (!sessionStorage.getItem('isLoggedIn')) {
+          window.location.href = 'login.html';
+      }
+  
+      // Add logout handler
+      document.addEventListener('DOMContentLoaded', function() {
+          const logoutButton = document.querySelector('button:contains("Logout")');
+          if (logoutButton) {
+              logoutButton.addEventListener('click', function() {
+                  sessionStorage.removeItem('isLoggedIn');
+                  window.location.href = 'login.html';
+              });
+          }
+      });
+  </script>
     <title>Dashboard</title>
+
   </head>
 
   <body>
+ 
     <header>
       <nav>
         <div class="nav-brand">

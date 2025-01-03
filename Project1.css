@@ -91,11 +91,14 @@ align-items: center;
 .boxPj {
   background-color: #f15bb5;
 }
-.boxServis, .boxPk, .boxPj, .report {
+.boxServis, .boxPk, .boxPj, .report, .buyback {
   box-shadow: 1px 1px 7px rgba(0,0,0,9);
 }
 .report {
   background-color: #6eeb83;
+}
+.buyback {
+  background-color: #e69e41;
 }
 main {
   display: flex;
@@ -127,48 +130,7 @@ table tbody {
   padding: 4px;
   font-size: 0.8rem;
 }
- /* Add these new classes for better font control */
- .form-select.title {
-  font-size: 0.9rem !important;  /* 16px */
-  padding: 0.5rem;
-}
-
-.form-label {
-  font-size: 0.9rem !important;  /* 18px */
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-}
-
-.mainbar h4 {
-  font-size: 1.5rem;  /* 24px */
-  margin-bottom: 1rem;
-}
-
-.maintop p {
-  font-size: 1.125rem !important;  /* 18px */
-}
-
-/* Modal customization */
-.modal-title {
-  font-size: 1.25rem;  /* 20px */
-  font-weight: 600;
-}
-
-.modal-body {
-  font-size: 1rem;  /* 16px */
-}
-
-/* Make form inputs more readable */
-.form-control {
-  font-size: 1rem !important;  /* 16px */
-  padding: 0.5rem;
-}
-
-/* Submit button styling */
-.btn-primary {
-  font-size: 1.125rem;  /* 18px */
-  padding: 0.75rem;
-}
+ 
 
 aside {
   width: 15%;

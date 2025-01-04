@@ -222,6 +222,7 @@ aside ul ul li {
 }
 .form-control {
   font-size: 0.8rem;
- 
 }
-
+.hidden {
+  display: none;
+}

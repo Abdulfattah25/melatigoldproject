@@ -91,14 +91,52 @@ align-items: center;
 .boxPj {
   background-color: #f15bb5;
 }
-.boxServis, .boxPk, .boxPj, .report, .buyback {
-  box-shadow: 1px 1px 7px rgba(0,0,0,9);
-}
 .report {
   background-color: #6eeb83;
 }
 .buyback {
   background-color: #e69e41;
+}
+.antrian {
+  background-color: #b35fe4
+}
+.boxServis, .boxPk, .boxPj, .report, .buyback, .antrian {
+  box-shadow: 1px 1px 7px rgba(0,0,0,9);
+}
+.bg-opacity {
+  background-color: rgba(128, 128, 128, 0.5); /* Abu-abu dengan opacity 50% */
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.bg-opacity:hover {
+  color: #000; /* Teks menjadi lebih jelas */
+  background-color: rgba(128, 128, 128, 0.8); /* Latar belakang abu-abu menjadi lebih gelap */
+}
+.boxServis, .boxPk, .boxPj, .report, .buyback, .antrian {
+  position: relative; /* Menjadikan kotak sebagai referensi untuk posisi absolut */
+}
+
+.lihat-detail {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0;
+  margin: 0;
+  font-size: 0.85rem;
+}
+.lihat-detail a {
+  text-align: right;
+  display: block;
+  padding-right: 5px;
+}
+
+.queue-display {
+  font-size: 4rem;
+  font-weight: bold;
+}
+.action-buttons button {
+  min-width: 150px;
 }
 main {
   display: flex;

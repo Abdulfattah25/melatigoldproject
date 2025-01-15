@@ -321,7 +321,7 @@
         await new Promise((resolve) => {
           const utterance = new SpeechSynthesisUtterance(waitText);
           utterance.lang = "id-ID";
-          utterance.rate = 0.9;
+          utterance.rate = 1;
           utterance.pitch = 1.2;
           utterance.onend = resolve;
 
@@ -352,11 +352,11 @@
 
         // Set voice preferences
         utterance.lang = "id-ID";
-        utterance.rate = 0.8; // Slower speed (0.1 to 1.0)
+        utterance.rate = 1; // Slower speed (0.1 to 1.0)
         utterance.pitch = 1.2; // Slightly higher pitch for female voice
 
         // Add slight pause between words
-        utterance.text = text.split(" ").join(", ");
+       
         speechSynthesis.speak(utterance);
       }
       async function playQueueAnnouncement(queueNumber) {

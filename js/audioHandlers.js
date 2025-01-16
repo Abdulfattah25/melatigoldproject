@@ -1,4 +1,7 @@
-import { AUDIO_PATHS } from './audioConfig.js';
+import { AUDIO_PATHS, getPreferredVoice } from './audioConfig.js';
+const utterance = new SpeechSynthesisUtterance(text);
+utterance.voice = getPreferredVoice();
+
 
 export async function playWaitMessageSequence() {
     const openingChime = new Audio(AUDIO_PATHS.informasi);

@@ -49,12 +49,7 @@ export async function playTakeQueueMessage() {
     utterance.pitch = 1.2;
     utterance.onend = resolve;
 
-    const voices = window.speechSynthesis.getVoices();
-    const femaleVoice = voices.find((voice) => voice.lang.includes("id") && voice.name.includes("Female"));
-
-    if (femaleVoice) {
-      utterance.voice = femaleVoice;
-    }
+    
 
     speechSynthesis.speak(utterance);
   });

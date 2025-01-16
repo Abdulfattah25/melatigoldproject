@@ -77,6 +77,9 @@
             <div class="col text-center">
               <button class="btn btn-primary btn-lg" id="waitMessage">Informasi Tunggu</button>
             </div>
+            <div class="col text-center">
+              <button class="btn btn-primary btn-lg" id="takeMessage">Pengingat Nomor Antrian</button>
+            </div>
           </div>
 
           <!-- Queue Management Section -->
@@ -90,8 +93,21 @@
                   <div class="action-buttons d-flex flex-column gap-3">
                     <button class="btn btn-success" id="callButton">Panggil Nomor Antrian</button>
                     <button class="btn btn-primary" id="handleButton">Sudah Dilayani</button>
-                    <button class="btn btn-warning" id="customQueueButton">Custom Nomor Antrian</button>
+                    <button class="btn btn-warning" id="delayQueueButton">Nomor Antrian Tertunda</button>
+                    <button class="btn btn-secondary" id="customQueueButton">Custom Nomor Antrian</button>
                     <button class="btn btn-danger" id="resetButton">Reset Antrian</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mx-auto">
+              <div class="card">
+                <div class="card-body text-center">
+                  <h5 class="card-title mb-4">Nomor Antrian Tertunda</h5>
+                  <div class="queue-display mb-4" id="delayQueueNumber"></div>
+                  <div class="action-buttons d-flex flex-column gap-3">
+                    <button class="btn btn-success" id="delayCallButton">Panggil Nomor Antrian</button>
+                    <button class="btn btn-primary" id="delayHandleButton">Sudah Dilayani</button>
                   </div>
                 </div>
               </div>
@@ -116,6 +132,24 @@
             </div>
           </div>
         </div>
+        <!-- Confirmation Modal for Delayed Queue -->
+<div class="modal fade" id="confirmDelayedModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmDelayedModalLabel">Konfirmasi</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        Apakah Anda yakin nomor antrian ini sudah dilayani?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+        <button type="button" class="btn btn-primary" id="confirmDelayedYes">Ya</button>
+      </div>
+    </div>
+  </div>
+</div>
         <!-- Add this modal HTML before closing body tag -->
         <div class="modal fade" id="resetModal" tabindex="-1">
           <div class="modal-dialog">
@@ -134,6 +168,7 @@
             </div>
           </div>
         </div>
+        
         <!-- Add this modal HTML before closing body tag -->
         <div class="modal fade" id="customQueueModal" tabindex="-1">
           <div class="modal-dialog">
@@ -217,219 +252,6 @@
         </ul>
       </aside>
     </main>
-    <script>
-      class QueueManager {
-        constructor() {
-          this.letters = ["A", "B", "C", "D"];
-
-          const savedState = localStorage.getItem("queueState");
-          if (savedState) {
-            const state = JSON.parse(savedState);
-            this.currentLetter = state.letter;
-            this.currentNumber = state.number;
-            this.currentBlock = state.block;
-          } else {
-            this.currentLetter = 0;
-            this.currentNumber = 1;
-            this.currentBlock = 0;
-          }
-        }
-
-        formatNumber(num) {
-          return num.toString().padStart(3, "0");
-        }
-
-        getCurrentQueue() {
-          return `${this.letters[this.currentLetter]}${this.formatNumber(this.currentNumber + this.currentBlock * 10)}`;
-        }
-
-        saveState() {
-          const state = {
-            letter: this.currentLetter,
-            number: this.currentNumber,
-            block: this.currentBlock,
-          };
-          localStorage.setItem("queueState", JSON.stringify(state));
-        }
-
-        next() {
-          const previousState = {
-            letter: this.currentLetter,
-            number: this.currentNumber,
-            block: this.currentBlock,
-          };
-          localStorage.setItem("previousQueueState", JSON.stringify(previousState));
-
-          this.currentNumber++;
-          if (this.currentNumber > 10) {
-            this.currentNumber = 1;
-            this.currentLetter++;
-
-            if (this.currentLetter >= this.letters.length) {
-              this.currentLetter = 0;
-              this.currentBlock++;
-
-              if (this.currentBlock >= 5) {
-                this.currentBlock = 0;
-              }
-            }
-          }
-
-          this.saveState();
-          return this.getCurrentQueue();
-        }
-
-        setCustomQueue(letter, number) {
-          const letterIndex = this.letters.indexOf(letter);
-          if (letterIndex === -1 || number < 1 || number > 50) {
-            return false;
-          }
-
-          this.currentLetter = letterIndex;
-          this.currentBlock = Math.floor((number - 1) / 10);
-          this.currentNumber = ((number - 1) % 10) + 1;
-
-          this.saveState();
-          return this.getCurrentQueue();
-        }
-
-        reset() {
-          this.currentLetter = 0;
-          this.currentNumber = 1;
-          this.currentBlock = 0;
-          this.saveState();
-          return this.getCurrentQueue();
-        }
-      }
-      async function playWaitMessageSequence() {
-        // 1. Opening chime
-        const openingChime = new Audio("audio/informasi.mp3");
-
-        // 2. Wait message text
-        const waitText =
-          "Kepada Pelanggan Melati Gold Shop yang terhormat, kami mohon kesabarannya untuk menunggu giliran pelayanan. Terima kasih atas perhatian dan pengertiannya";
-
-        // 3. Closing audio
-        const closingAudio = new Audio("");
-
-        // Play complete sequence
-        await new Promise((resolve) => {
-          openingChime.addEventListener("ended", resolve);
-          openingChime.play();
-        });
-
-        await new Promise((resolve) => {
-          const utterance = new SpeechSynthesisUtterance(waitText);
-          utterance.lang = "id-ID";
-          utterance.rate = 1;
-          utterance.pitch = 1.2;
-          utterance.onend = resolve;
-
-          const voices = window.speechSynthesis.getVoices();
-          const femaleVoice = voices.find((voice) => voice.lang.includes("id") && voice.name.includes("Female"));
-
-          if (femaleVoice) {
-            utterance.voice = femaleVoice;
-          }
-
-          speechSynthesis.speak(utterance);
-        });
-
-        await new Promise((resolve) => {
-          closingAudio.addEventListener("ended", resolve);
-          closingAudio.play();
-        });
-      }
-      function announceQueueNumber(queueNumber) {
-        const letter = queueNumber.charAt(0);
-        const numbers = queueNumber.substring(1);
-
-        const text = `Nomor antrian ${letter} ${numbers.split("").join(" ")}`;
-        const utterance = new SpeechSynthesisUtterance(text);
-
-        // Get available voices
-        const voices = window.speechSynthesis.getVoices();
-
-        // Set voice preferences
-        utterance.lang = "id-ID";
-        utterance.rate = 1; // Slower speed (0.1 to 1.0)
-        utterance.pitch = 1.2; // Slightly higher pitch for female voice
-
-        // Add slight pause between words
-       
-        speechSynthesis.speak(utterance);
-      }
-      async function playQueueAnnouncement(queueNumber) {
-        const introRingtone = new Audio("audio/antrian.mp3");
-
-        // Create Promise to handle ringtone completion
-        const playRingtone = () => {
-          return new Promise((resolve) => {
-            introRingtone.addEventListener("ended", resolve);
-            introRingtone.play();
-          });
-        };
-
-        // Play sequence: ringtone first, then queue announcement
-        await playRingtone();
-        await announceQueueNumber(queueNumber);
-      }
-      // Add this to ensure voices are loaded
-      window.speechSynthesis.onvoiceschanged = () => {
-        const voices = window.speechSynthesis.getVoices();
-        console.log("Available voices:", voices);
-      };
-      document.addEventListener("DOMContentLoaded", () => {
-        const queueManager = new QueueManager();
-        const queueDisplay = document.getElementById("queueNumber");
-        queueDisplay.textContent = queueManager.getCurrentQueue();
-        // Update wait message button event listener
-        document.getElementById("waitMessage").addEventListener("click", () => {
-          playWaitMessageSequence();
-        });
-        document.getElementById("callButton").addEventListener("click", async () => {
-          const currentQueue = queueDisplay.textContent;
-          await playQueueAnnouncement(currentQueue);
-        });
-        // Add Bootstrap JS to your page
-        document.getElementById("handleButton").addEventListener("click", () => {
-          const modal = new bootstrap.Modal(document.getElementById("confirmModal"));
-          modal.show();
-        });
-
-        document.getElementById("confirmYes").addEventListener("click", () => {
-          queueDisplay.textContent = queueManager.next();
-          bootstrap.Modal.getInstance(document.getElementById("confirmModal")).hide();
-        });
-        // Add event listeners for custom queue
-        document.getElementById("customQueueButton").addEventListener("click", () => {
-          const modal = new bootstrap.Modal(document.getElementById("customQueueModal"));
-          modal.show();
-        });
-
-        document.getElementById("setCustomQueue").addEventListener("click", () => {
-          const letter = document.getElementById("queueLetter").value;
-          const number = parseInt(document.getElementById("queueNumberInput").value);
-
-          if (number >= 1 && number <= 100) {
-            queueDisplay.textContent = queueManager.setCustomQueue(letter, number);
-            bootstrap.Modal.getInstance(document.getElementById("customQueueModal")).hide();
-          } else {
-            alert("Please enter a valid number between 1 and 100");
-          }
-        });
-        // Update event listener for reset button
-        document.getElementById("resetButton").addEventListener("click", () => {
-          const modal = new bootstrap.Modal(document.getElementById("resetModal"));
-          modal.show();
-        });
-
-        document.getElementById("resetYes").addEventListener("click", () => {
-          queueDisplay.textContent = queueManager.reset();
-          bootstrap.Modal.getInstance(document.getElementById("resetModal")).hide();
-        });
-      });
-    </script>
     <script type="module" src="js/melati.js"></script>
   </body>
 </html>

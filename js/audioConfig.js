@@ -6,17 +6,25 @@ export function getPreferredVoice() {
     const voices = window.speechSynthesis.getVoices();
     console.log('Available voices:', voices.map(v => `${v.name} (${v.lang})`));
     
-    const voicePreferences = [
-        voice => voice.name.includes('Microsoft') && voice.lang.includes('id') && voice.name.includes('Andika'),
-        voice => voice.lang.includes('id') && voice.name.includes('Andika'),
-        voice => voice.lang.includes('id'),
-        voice => true
-    ];
-    
-    for (const preference of voicePreferences) {
-        const voice = voices.find(preference);
-        if (voice) return voice;
+    // Cek spesifik untuk Microsoft Andika
+    let selectedVoice = voices.find(voice => 
+        voice.name === 'Microsoft Andika Online (Natural) - Indonesian' || 
+        voice.name === 'Microsoft Andika - Indonesian'
+    );
+
+    // Jika tidak ditemukan, cari yang mengandung kata Andika
+    if (!selectedVoice) {
+        selectedVoice = voices.find(voice => 
+            voice.name.includes('Andika') && 
+            voice.lang.includes('id')
+        );
     }
-    
-    return voices[0];
+
+    // Jika masih tidak ditemukan, gunakan suara Indonesia apapun
+    if (!selectedVoice) {
+        selectedVoice = voices.find(voice => voice.lang.includes('id'));
+    }
+
+    console.log('Selected voice:', selectedVoice ? selectedVoice.name : 'Default voice');
+    return selectedVoice || voices[0];
 }

@@ -1,185 +1,178 @@
-// $(document).ready(function () {
-//     $(".inpt-btn").click(function () {
-//         $("aside ul .inpt-show").toggle();
-//     });
-// });
-// $(document).ready(function () {
-//     $(".utlt-btn").click(function () {
-//         $("aside ul .utlt-show").toggle();
-//     });
-// });
-// $(document).ready(function () {
-//     $(".lprn-btn").click(function () {
-//         $("aside ul .lprn-show").toggle();
-//     });
-// });
+// Import statements
+import { tambahBaris, updateNomorUrut } from "./inputService.js";
+import { addRowManualSale, enableRowDeletion } from "./analogsale.js";
+import { sidebarToggle } from "./sidebar.js";
+import { initializeBoxSale } from "./aksesorisSale.js";
+import { penerimaanHandler } from "./buyback.js";
+import { dateHandler } from "./date.js";
+import { aksesorisSaleHandler } from "./inputAksesoris.js";
+import { initTableToggles, initPengeluaranInput } from "./summary.js";
+import { QueueManager } from "./antrian.js";
+import {
+  playWaitMessageSequence,
+  playTakeQueueMessage,
+  playQueueAnnouncement,
+} from "./audioHandlers.js";
 
-// $(document).ready(function () {
-//     $(".inpt-btn").click(function () {
-//       // Sembunyikan semua daftar selain yang diklik
-//       $("aside ul ul").not(".inpt-show").hide();
-//       // Tampilkan atau sembunyikan daftar yang diklik
-//       $("aside ul .inpt-show").toggle();
-//     });
-  
-//     $(".utlt-btn").click(function () {
-//       // Sembunyikan semua daftar selain yang diklik
-//       $("aside ul ul").not(".utlt-show").hide();
-//       // Tampilkan atau sembunyikan daftar yang diklik
-//       $("aside ul .utlt-show").toggle();
-//     });
-  
-//     $(".lprn-btn").click(function () {
-//       // Sembunyikan semua daftar selain yang diklik
-//       $("aside ul ul").not(".lprn-show").hide();
-//       // Tampilkan atau sembunyikan daftar yang diklik
-//       $("aside ul .lprn-show").toggle();
-//     });
-//   });
+dateHandler.initializeDatepicker();
+document.addEventListener("DOMContentLoaded", () => {
+  aksesorisSaleHandler.init();
+  initTableToggles();
+  initPengeluaranInput();
+});
+document.addEventListener("DOMContentLoaded", function () {
+  // Re-initialize date handling after DOM is loaded
+  dateHandler.initializeDatepicker();
+  // InputService functionality
+  const tbody = document.querySelector("#tableBarang tbody");
+  const btnTambah = document.getElementById("btnTambah");
 
-//   $(document).ready(function () {
-//     $(".inpt-btn").click(function () {
-//       // Sembunyikan semua daftar yang bukan milik tombol yang diklik
-//       $(".inpt-show").toggle();
-//       $(".utlt-show, .lprn-show").hide(); // Sembunyikan daftar lain jika ada
-//     });
-  
-//     $(".utlt-btn").click(function () {
-//       // Sembunyikan semua daftar yang bukan milik tombol yang diklik
-//       $(".utlt-show").toggle();
-//       $(".inpt-show, .lprn-show").hide(); // Sembunyikan daftar lain jika ada
-//     });
-  
-//     $(".lprn-btn").click(function () {
-//       // Sembunyikan semua daftar yang bukan milik tombol yang diklik
-//       $(".lprn-show").toggle();
-//       $(".inpt-show, .utlt-show").hide(); // Sembunyikan daftar lain jika ada
-//     });
-//   });
-
-//   $(document).ready(function () {
-//     // Saat dokumen dimuat, sembunyikan semua sub bagian
-//     $("aside ul ul").hide();
-  
-//     $(".inpt-btn").click(function () {
-//       // Sembunyikan semua sub bagian yang bukan milik tombol yang diklik
-//       $(".inpt-show").toggle();
-//       $(".utlt-show, .lprn-show").hide(); // Sembunyikan sub bagian lain jika ada
-  
-//       // Tambahkan kelas "active" ke tombol yang diklik, dan hapus dari yang lain
-//       $(this).addClass("active");
-//       $(".utlt-btn, .lprn-btn").removeClass("active");
-//     });
-  
-//     $(".utlt-btn").click(function () {
-//       // Sembunyikan semua sub bagian yang bukan milik tombol yang diklik
-//       $(".utlt-show").toggle();
-//       $(".inpt-show, .lprn-show").hide(); // Sembunyikan sub bagian lain jika ada
-  
-//       // Tambahkan kelas "active" ke tombol yang diklik, dan hapus dari yang lain
-//       $(this).addClass("active");
-//       $(".inpt-btn, .lprn-btn").removeClass("active");
-//     });
-  
-//     $(".lprn-btn").click(function () {
-//       // Sembunyikan semua sub bagian yang bukan milik tombol yang diklik
-//       $(".lprn-show").toggle();
-//       $(".inpt-show, .utlt-show").hide(); // Sembunyikan sub bagian lain jika ada
-  
-//       // Tambahkan kelas "active" ke tombol yang diklik, dan hapus dari yang lain
-//       $(this).addClass("active");
-//       $(".inpt-btn, .utlt-btn").removeClass("active");
-//     });
-//   });
-  
-  // // $(document).ready(function () {
-  // //   // Saat dokumen dimuat, sembunyikan semua sub bagian
-  // //   $("aside ul ul").hide();
-  
-  // //   // Tangkap klik tombol toggle
-  // //   $(".inpt-btn, .utlt-btn, .lprn-btn").click(function () {
-  // //     // Dapatkan nilai dari atribut data-target pada tombol yang diklik
-  // //     var target = $(this).data("target");
-      
-  // //     // Sembunyikan semua sub bagian yang bukan milik tombol yang diklik
-  // //     $("aside ul ul").not("#" + target).hide();
-  
-  // //     // Tampilkan atau sembunyikan sub bagian yang sesuai
-  // //     $("#" + target).toggle();
-      
-  // //     // Hapus kelas "active" dari semua tombol toggle
-  // //     $(".inpt-btn, .utlt-btn, .lprn-btn").removeClass("active");
-      
-  // //     // Tambahkan kelas "active" ke tombol yang diklik
-  // //     $(this).addClass("active");
-  // //   });
-  // // });
-  
-  // $(document).ready(function () {
-  //   // Saat dokumen dimuat, sembunyikan semua sub bagian
-  //   $("aside ul ul").hide();
-  
-  //   // Ambil URL saat ini
-  //   var currentURL = window.location.href;
-  
-  //   // Loop melalui setiap tombol toggle
-  //   $(".inpt-btn, .utlt-btn, .lprn-btn").each(function () {
-  //     var target = $(this).data("target");
-      
-  //     // Jika URL saat ini berisi bagian yang sesuai, tampilkan sub bagian
-  //     if (currentURL.indexOf(target) !== -1) {
-  //       $("#" + target).show();
-  //       $(this).addClass("active");
-  //     }
-  
-  //     // Tangkap klik tombol toggle
-  //     $(this).click(function () {
-  //       // Sembunyikan semua sub bagian yang bukan milik tombol yang diklik
-  //       $("aside ul ul").not("#" + target).hide();
-  
-  //       // Tampilkan atau sembunyikan sub bagian yang sesuai
-  //       $("#" + target).toggle();
-      
-  //       // Hapus kelas "active" dari semua tombol toggle
-  //       $(".inpt-btn, .utlt-btn, .lprn-btn").removeClass("active");
-      
-  //       // Tambahkan kelas "active" ke tombol yang diklik
-  //       $(this).addClass("active");
-  //     });
-  //   });
-  // });
-  
-  $(document).ready(function () {
-    // Saat dokumen dimuat, sembunyikan semua sub bagian
-    $("aside ul ul").hide();
-  
-    // Ambil path URL saat ini (misalnya, "/Saldo Awal.html")
-    var currentPath = window.location.pathname;
-  
-    // Loop melalui setiap tombol toggle
-    $(".inpt-btn, .utlt-btn, .lprn-btn").each(function () {
-      var target = $(this).data("target");
-  
-      // Bandingkan path URL saat ini dengan data-target
-      if (currentPath === "/" + target + ".html") {
-        $("#" + target).show(); // Tampilkan sub bagian yang sesuai
-        $(this).addClass("active"); // Tandai tombol toggle sebagai aktif
-      }
-  
-      // Tangkap klik tombol toggle
-      $(this).click(function () {
-        // Sembunyikan semua sub bagian yang bukan milik tombol yang diklik
-        $("aside ul ul").not("#" + target).hide();
-  
-        // Tampilkan atau sembunyikan sub bagian yang sesuai
-        $("#" + target).toggle();
-      
-        // Hapus kelas "active" dari semua tombol toggle
-        $(".inpt-btn, .utlt-btn, .lprn-btn").removeClass("active");
-      
-        // Tambahkan kelas "active" ke tombol yang diklik
-        $(this).addClass("active");
-      });
+  if (btnTambah && tbody) {
+    btnTambah.addEventListener("click", function () {
+      tambahBaris(tbody);
     });
+    updateNomorUrut(tbody);
+  }
+  // Sidebar functionality
+  try {
+    sidebarToggle();
+  } catch (error) {
+    console.log("Sidebar toggle:", error);
+  }
+  // AnalogSale functionality
+  try {
+    const manualTable = document.getElementById("tableManual");
+    const addButton = document.getElementById("btnTambah");
+
+    if (manualTable && addButton) {
+      addRowManualSale("btnTambah", "tableManual");
+    }
+    enableRowDeletion([
+      "tableBarang",
+      "tableKotak",
+      "tableManual",
+      "tableTambahAksesoris",
+    ]);
+  } catch (error) {
+    console.log("AnalogSale:", error);
+  }
+  // BoxSale functionality
+  initializeBoxSale();
+  // Tambah baris dan Fungsi Penerimaan Buyback
+  document
+    .getElementById("btnTambahPenerimaan")
+    .addEventListener("click", () => {
+      tambahBaris("#tablePenerimaan tbody");
+    });
+  penerimaanHandler.initializeForm();
+});
+// Add jQuery ready check for datepicker
+$(document).ready(function () {
+  dateHandler.initializeDatepicker();
+});
+// Add this to ensure voices are loaded
+window.speechSynthesis.onvoiceschanged = () => {
+  const voices = window.speechSynthesis.getVoices();
+  console.log("Available voices:", voices);
+};
+document.addEventListener("DOMContentLoaded", () => {
+  const queueManager = new QueueManager();
+  const queueDisplay = document.getElementById("queueNumber");
+  const delayQueueDisplay = document.getElementById("delayQueueNumber");
+  function updateDisplays() {
+    queueDisplay.textContent = queueManager.getCurrentQueue();
+    delayQueueDisplay.textContent =
+      queueManager.getDelayedQueue().join(", ") || "-";
+  }
+  updateDisplays(); // Add to delayed queue button
+
+  document.getElementById("delayQueueButton").addEventListener("click", () => {
+    const currentQueue = queueDisplay.textContent;
+    queueManager.addToDelayedQueue(currentQueue);
+    queueDisplay.textContent = queueManager.next();
+    updateDisplays();
+  }); // Call delayed queue number
+
+  document
+    .getElementById("delayCallButton")
+    .addEventListener("click", async () => {
+      const delayedNumbers = queueManager.getDelayedQueue();
+      if (delayedNumbers.length > 0) {
+        await playQueueAnnouncement(delayedNumbers[0]);
+      }
+    }); // Remove the direct event handler for delayHandleButton
+
+  const delayHandleButton = document.getElementById("delayHandleButton");
+  delayHandleButton.removeEventListener("click", () => {}); // Add new event handler
+
+  delayHandleButton.addEventListener("click", () => {
+    const delayedNumbers = queueManager.getDelayedQueue();
+    if (delayedNumbers.length > 0) {
+      const confirmDelayedModal = new bootstrap.Modal("#confirmDelayedModal");
+      confirmDelayedModal.show();
+    }
   });
-  
+
+  document.getElementById("confirmDelayedYes").addEventListener("click", () => {
+    const delayedNumbers = queueManager.getDelayedQueue();
+    if (delayedNumbers.length > 0) {
+      queueManager.removeFromDelayedQueue(delayedNumbers[0]);
+      updateDisplays();
+      const modal = bootstrap.Modal.getInstance(
+        document.getElementById("confirmDelayedModal")
+      );
+      modal.hide();
+    }
+  });
+
+  document.getElementById("takeMessage").addEventListener("click", () => {
+    playTakeQueueMessage();
+  }); // Update wait message button event listener
+
+  document.getElementById("waitMessage").addEventListener("click", () => {
+    playWaitMessageSequence();
+  });
+  document.getElementById("callButton").addEventListener("click", async () => {
+    const currentQueue = queueDisplay.textContent;
+    await playQueueAnnouncement(currentQueue);
+  }); // Add Bootstrap JS to your page
+  document.getElementById("handleButton").addEventListener("click", () => {
+    const modal = new bootstrap.Modal(document.getElementById("confirmModal"));
+    modal.show();
+  });
+
+  document.getElementById("confirmYes").addEventListener("click", () => {
+    queueDisplay.textContent = queueManager.next();
+    bootstrap.Modal.getInstance(document.getElementById("confirmModal")).hide();
+  }); // Add event listeners for custom queue
+
+  document.getElementById("customQueueButton").addEventListener("click", () => {
+    const modal = new bootstrap.Modal(
+      document.getElementById("customQueueModal")
+    );
+    modal.show();
+  });
+
+  document.getElementById("setCustomQueue").addEventListener("click", () => {
+    const letter = document.getElementById("queueLetter").value;
+    const number = parseInt(document.getElementById("queueNumberInput").value);
+
+    if (number >= 1 && number <= 100) {
+      queueDisplay.textContent = queueManager.setCustomQueue(letter, number);
+      bootstrap.Modal.getInstance(
+        document.getElementById("customQueueModal")
+      ).hide();
+    } else {
+      alert("Please enter a valid number between 1 and 100");
+    }
+  }); // Update event listener for reset button
+  document.getElementById("resetButton").addEventListener("click", () => {
+    const modal = new bootstrap.Modal(document.getElementById("resetModal"));
+    modal.show();
+  });
+
+  document.getElementById("resetYes").addEventListener("click", () => {
+    queueDisplay.textContent = queueManager.reset();
+    bootstrap.Modal.getInstance(document.getElementById("resetModal")).hide();
+  });
+});

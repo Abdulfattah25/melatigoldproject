@@ -20,7 +20,7 @@
     <!-- Your custom CSS -->
     <link rel="stylesheet" href="css/Project1.css">
     <link rel="stylesheet" href="fontawesome/css/all.css">
-    <title>Penjualan Manual</title>
+    <title>Penjualan Aksesoris</title>
   </head>
 
   <body>
@@ -44,8 +44,8 @@
             K
           </button>
           <ul class="dropdown-menu">
-            <li><span><i class="fa-solid fa-user"></i></span><button class="dropdown-item" type="button" >Tambah Sales</button></li>
-            <li><span><i class="fa-solid fa-gear"></i></span><button class="dropdown-item" type="button">Pengaturan Printer</button></li>
+            <li><span><i class="fa-solid fa-key opacity-75"></i></span><button class="dropdown-item" type="button" >Tambah Sales</button></li>
+            <li><span><i class="fa-solid fa-gears opacity-75"></i></span><button class="dropdown-item" type="button">Pengaturan Printer</button></li>
             <li><span><i class="fa-solid fa-download opacity-75"></i></span><button class="dropdown-item" type="button">Unduh Konektor Printer</button></li>
             <li><button class="dropdown-item" type="button">Logout</button></li>
           </ul>
@@ -55,27 +55,27 @@
     </header>
     <main>
       <div class="mainbar">
-        <h5>Penjualan Manual</h5>
+        <h5>Penjualan Aksesoris</h5>
         <div class="maintop">
-          <p>Tambah Penjualan Manual</p>
+          <p>Tambah Penjualan Aksesoris</p>
         </div>
         <div class="container">
           <div class="dataSales border-bottom pb-5">
             <form class="row g-3 pt-2">
               <div class="col-md-4">
                 <label for="tanggal" class="form-label">Tanggal</label>
-                <div class="d-flex justify-content-center">
-                  <input type="text" class="form-control" id="tanggal" placeholder="Masukkan tanggal">
-                  <i class="fa-solid fa-calendar-days text-light border rounded opacity-75" id="calendarIcon" style="cursor: pointer;"></i>
-                </div>
+                <div class="d-flex justify-content-center align-items-center">
+                <input type="text" class="form-control" id="tanggal" placeholder="Masukkan tanggal">
+                <i class="fa-solid fa-calendar-days text-light border rounded opacity-75" id="calendarIcon" style="cursor: pointer;"></i>
+              </div>
               </div>
               <div class="col-md-4">
-                <label for="barcode" class="form-label">Barcode</label>
-                <input type="text" class="form-control" id="barcode" placeholder="Input Barcode (Jika Ada)">
+                <label for="noKotak" class="form-label">No Penjualan</label>
+                <input type="text" class="form-control" id="noKotak" placeholder="Masukkan No Servis">
               </div>
               <div class="col-md-4">
                 <label for="sales" class="form-label">Sales</label>
-                <input type="text" class="form-control" id="sales" placeholder="Input Nama Sales">
+                <input type="text" class="form-control" id="sales" placeholder="Masukkan Sales">
               </div>
             </form>
           </div>
@@ -100,31 +100,32 @@
               <h6>Detail Barang</h6>
               <button id="btnTambah" class="btn btn-primary ms-auto">Tambah</button>
             </div>
-            <table class="table" id="tableManual">
+            <table class="table" id="tableKotak">
               <thead class="table">
                 <tr>
-                  <th style="width: 10% ;">ID</th>
-                  <th style="width: 35%;">Nama Barang</th>
-                  <th style="width: 10%;">Kadar</th>
-                  <th style="width: 10%;">Berat</th>
-                  <th style="width: 30%;">Keterangan Manual</th>
-                  <th style="width: 5%;">Aksi</th>
+                  <th style="width:10%">Kode Aksesoris</th>
+                  <th style="width:35%">Nama Barang</th>
+                  <th style="width:10%">Jumlah</th>
+                  <th style="width:10%">Berat</th>
+                  <th style="width:15%">Harga Per Gram</th>
+                  <th style="width:15%">Total Harga</th>
+                  <th style="width:5%">Aksi</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><input type="text" class="form-control" placeholder="ID"></td>
                   <td><input type="text" class="form-control" placeholder="Nama Barang"></td>
-                  <td><input type="text" class="form-control" placeholder="Kadar"></td>
-                  <td><input type="text" class="form-control" placeholder="Berat"></td>
-                  <td><input type="text" class="form-control" placeholder="Keterangan"></td>
+                  <td><input type="number" class="form-control" placeholder="Jumlah"></td>
+                  <td><input type="number" class="form-control" placeholder="Berat"></td>
+                  <td><input type="number" class="form-control" placeholder="Harga Per Gram"></td>
+                  <td><input type="number" class="form-control" placeholder="Total Harga"></td>
                   <td>
                     <button class="btn btn-danger btn-sm btnHapus">
                         <i class="bi bi-x"></i>
                     </button>
-                  </td>
+                </td>
                 </tr>
-                <!-- Tambahkan baris tambahan di sini jika diperlukan -->
               </tbody>
             </table>
           </div>
@@ -134,6 +135,7 @@
               <label for="metodeBayar" class="form-label">Metode Pembayaran</label>
               <select class="form-select form-select-sm mb-2" aria-label=".form-select-sm example">
                   <option value="1">Tunai</option>
+                  <option value="2">DP</option>
               </select>
           </div>
           <div class="col-md-4">
@@ -148,8 +150,6 @@
           </div>
           <button class="btn btn-primary mt-3">Simpan Data</button>
           </div>
-        </div>
-        
       </div>
       <aside class="sidebar">
         <ul>
@@ -169,7 +169,7 @@
           <li><a href="#" class="sell-btn" data-target="sell-show">Penjualan<span class="fas fa-caret-down first"></span></a>
             <ul class="sell-btn" id="sell-show">
               <li><a href="penjualanManual.html">Penjualan Manual</a></li>
-              <li><a href="penjualanAksesoris.html">Penjualan Aksesoris</a></li>
+              <li><a href="#">Penjualan Aksesoris</a></li>
             </ul>
           </li>
           <li><a href="#" class="utlt-btn" data-target="utlt-show">Utility<span class="fas fa-caret-down second"></span></a>

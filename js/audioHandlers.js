@@ -1,7 +1,4 @@
-import { AUDIO_PATHS, getPreferredVoice } from './audioConfig.js';
-const utterance = new SpeechSynthesisUtterance(text);
-utterance.voice = getPreferredVoice();
-
+import { AUDIO_PATHS } from './audioConfig.js';
 
 export async function playWaitMessageSequence() {
     const openingChime = new Audio(AUDIO_PATHS.informasi);
@@ -52,7 +49,12 @@ export async function playTakeQueueMessage() {
     utterance.pitch = 1.2;
     utterance.onend = resolve;
 
-    
+    const voices = window.speechSynthesis.getVoices();
+    const femaleVoice = voices.find((voice) => voice.lang.includes("id") && voice.name.includes("Female"));
+
+    if (femaleVoice) {
+      utterance.voice = femaleVoice;
+    }
 
     speechSynthesis.speak(utterance);
   });

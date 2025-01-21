@@ -15,7 +15,9 @@ import {
   announceQueueNumber,
   announceVehicleMessage
 } from "./audioHandlers.js";
-
+document.querySelector('.hamburger-menu').addEventListener('click', function() {
+  document.querySelector('.sidebar').classList.toggle('active');
+});
 dateHandler.initializeDatepicker();
 document.addEventListener("DOMContentLoaded", () => {
   aksesorisSaleHandler.init();

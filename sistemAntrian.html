@@ -34,6 +34,9 @@
           </a>
         </div>
         <div class="left-nav">
+          <div class="hamburger-menu">
+            <i class="fas fa-bars"></i>
+          </div>
           <div class=""><span id="tgl" class="font-weight-bold"></span></div>
           <div class="dropdown">
             <button
@@ -180,7 +183,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
               </div>
               <div class="modal-body">
-                <p>Reset nomor antrian ke A001?</p>
+                <p>Reset nomor antrian ke A01?</p>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
@@ -272,20 +275,6 @@
         </ul>
       </aside>
     </main>
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-          // Minta izin audio saat halaman dimuat
-          const requestPermission = async () => {
-              try {
-                  await navigator.mediaDevices.getUserMedia({ audio: true });
-              } catch (err) {
-                  console.log('Izin audio diperlukan');
-              }
-          };
-          
-          
-      });
-      </script>
     <script type="module" src="js/melati.js"></script>
 
   </body>

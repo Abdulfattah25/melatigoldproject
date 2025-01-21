@@ -70,7 +70,7 @@ export function announceQueueNumber(queueNumber, language = 'id') {
 
   // Set voice preferences based on language
   utterance.lang = language === 'id' ? "id-ID" : "en-US";
-  utterance.rate = 0.7;
+  utterance.rate = 0.9;
   utterance.pitch = 1;
 
   speechSynthesis.speak(utterance);

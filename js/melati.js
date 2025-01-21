@@ -12,7 +12,8 @@ import {
   playWaitMessageSequence,
   playTakeQueueMessage,
   playQueueAnnouncement,
-  
+  announceQueueNumber,
+  announceVehicleMessage
 } from "./audioHandlers.js";
 
 dateHandler.initializeDatepicker();
@@ -73,28 +74,39 @@ document.addEventListener("DOMContentLoaded", () => {
   const queueManager = new QueueManager();
   const queueDisplay = document.getElementById("queueNumber");
   const delayQueueDisplay = document.getElementById("delayQueueNumber");
+
   function updateDisplays() {
     queueDisplay.textContent = queueManager.getCurrentQueue();
     delayQueueDisplay.textContent = queueManager.getDelayedQueue().join(", ") || "-";
   }
-  updateDisplays(); // Add to delayed queue button
+
+  updateDisplays();
 
   document.getElementById("delayQueueButton").addEventListener("click", () => {
     const currentQueue = queueDisplay.textContent;
     queueManager.addToDelayedQueue(currentQueue);
     queueDisplay.textContent = queueManager.next();
     updateDisplays();
-  }); // Call delayed queue number
+  });
 
+  // Tombol Panggil Nomor Antrian (Indonesia)
   document.getElementById("delayCallButton").addEventListener("click", async () => {
     const delayedNumbers = queueManager.getDelayedQueue();
     if (delayedNumbers.length > 0) {
-      await playQueueAnnouncement(delayedNumbers[0]);
+      await playQueueAnnouncement(delayedNumbers[0], 'id');
     }
-  }); // Remove the direct event handler for delayHandleButton
+  });
+
+  // Tombol Call Queue Number (English)
+  document.getElementById("delayCallQueue").addEventListener("click", async () => {
+    const delayedNumbers = queueManager.getDelayedQueue();
+    if (delayedNumbers.length > 0) {
+      await playQueueAnnouncement(delayedNumbers[0], 'en');
+    }
+  });
 
   const delayHandleButton = document.getElementById("delayHandleButton");
-  delayHandleButton.removeEventListener("click", () => {}); // Add new event handler
+  delayHandleButton.removeEventListener("click", () => {});
 
   delayHandleButton.addEventListener("click", () => {
     const delayedNumbers = queueManager.getDelayedQueue();
@@ -113,18 +125,35 @@ document.addEventListener("DOMContentLoaded", () => {
       modal.hide();
     }
   });
+  
 
   document.getElementById("takeMessage").addEventListener("click", () => {
-    playTakeQueueMessage();
-  }); // Update wait message button event listener
+    playTakeQueueMessage('id');
+  });
+  
+  document.getElementById("takeQueue").addEventListener("click", () => {
+    playTakeQueueMessage('en');
+  });
+  
+  // Update wait message button event listener
 
   document.getElementById("waitMessage").addEventListener("click", () => {
-    playWaitMessageSequence();
+    playWaitMessageSequence('id');
+  });
+  
+  document.getElementById("waitInformation").addEventListener("click", () => {
+    playWaitMessageSequence('en');
   });
   document.getElementById("callButton").addEventListener("click", async () => {
     const currentQueue = queueDisplay.textContent;
-    await playQueueAnnouncement(currentQueue);
-  }); // Add Bootstrap JS to your page
+    await playQueueAnnouncement(currentQueue, 'id');
+  });
+  
+  document.getElementById("callQueue").addEventListener("click", async () => {
+    const currentQueue = queueDisplay.textContent;
+    await playQueueAnnouncement(currentQueue, 'en');
+  });
+   // Add Bootstrap JS to your page
   document.getElementById("handleButton").addEventListener("click", () => {
     const modal = new bootstrap.Modal(document.getElementById("confirmModal"));
     modal.show();
@@ -160,4 +189,31 @@ document.addEventListener("DOMContentLoaded", () => {
     queueDisplay.textContent = queueManager.reset();
     bootstrap.Modal.getInstance(document.getElementById("resetModal")).hide();
   });
+
+    const carTypeInput = document.getElementById("carType");
+    const plateNumberInput = document.getElementById("plateNumber");
+  
+    document.getElementById("panggilInformasi").addEventListener("click", () => {
+      const carType = carTypeInput.value;
+      const plateNumber = plateNumberInput.value;
+      
+      if (!carType || !plateNumber) {
+        alert("Mohon isi jenis mobil dan nomor polisi");
+        return;
+      }
+      
+      announceVehicleMessage(carType, plateNumber, 'id');
+    });
+  
+    document.getElementById("callInformation").addEventListener("click", () => {
+      const carType = carTypeInput.value;
+      const plateNumber = plateNumberInput.value;
+      
+      if (!carType || !plateNumber) {
+        alert("Please fill in car type and plate number");
+        return;
+      }
+      
+      announceVehicleMessage(carType, plateNumber, 'en');
+    });
 });

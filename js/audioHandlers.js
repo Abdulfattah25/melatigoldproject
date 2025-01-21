@@ -1,4 +1,4 @@
-import { AUDIO_PATHS, initializeAudioControl, controlSystemAudio} from "./audioConfig.js";
+import { AUDIO_PATHS } from "./audioConfig.js";
 
 export async function playWaitMessageSequence(language = 'id') {
   const openingChime = new Audio(AUDIO_PATHS.informasi);
@@ -70,7 +70,7 @@ export function announceQueueNumber(queueNumber, language = 'id') {
 
   // Set voice preferences based on language
   utterance.lang = language === 'id' ? "id-ID" : "en-US";
-  utterance.rate = 0.9;
+  utterance.rate = 0.7;
   utterance.pitch = 1;
 
   speechSynthesis.speak(utterance);
@@ -78,29 +78,18 @@ export function announceQueueNumber(queueNumber, language = 'id') {
 
 
 export async function playQueueAnnouncement(queueNumber, language = 'id') {
-  initializeAudioControl();
-    
-    try {
-        // Turunkan volume sistem
-        controlSystemAudio(true);
-        
-        const introRingtone = new Audio(AUDIO_PATHS.antrian);
-        
-        // Mainkan pengumuman
-        await new Promise((resolve) => {
-            introRingtone.addEventListener("ended", resolve);
-            introRingtone.play();
-        });
-        
-        await announceQueueNumber(queueNumber, language);
-        
-    } finally {
-        // Kembalikan volume sistem
-        controlSystemAudio(false);
-    }
-    
-    // Lanjutkan dengan pengumuman nomor
-    await announceQueueNumber(queueNumber, language);
+  const introRingtone = new Audio(AUDIO_PATHS.antrian);
+  const playRingtone = () => {
+    return new Promise((resolve) => {
+      introRingtone.addEventListener("ended", resolve);
+      introRingtone.play();
+    });
+  };
+
+  // Play sequence: ringtone first, then queue announcement
+  await playRingtone();
+  await announceQueueNumber(queueNumber, language);
+  await announceQueueNumber(queueNumber, language);
 }
 
 export async function announceVehicleMessage(carType, plateNumber, language = 'id') {

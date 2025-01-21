@@ -13,8 +13,7 @@ import {
   playTakeQueueMessage,
   playQueueAnnouncement,
   announceQueueNumber,
-  announceVehicleMessage,
-  
+  announceVehicleMessage
 } from "./audioHandlers.js";
 
 dateHandler.initializeDatepicker();
@@ -72,13 +71,6 @@ window.speechSynthesis.onvoiceschanged = () => {
   console.log("Available voices:", voices);
 };
 document.addEventListener("DOMContentLoaded", () => {
-  // Inisialisasi audio control saat ada interaksi user
-  const initAudio = () => {
-    initializeAudioControl();
-    document.removeEventListener('click', initAudio);
-};
-document.addEventListener('click', initAudio);
-
   const queueManager = new QueueManager();
   const queueDisplay = document.getElementById("queueNumber");
   const delayQueueDisplay = document.getElementById("delayQueueNumber");
@@ -224,5 +216,4 @@ document.addEventListener('click', initAudio);
       
       announceVehicleMessage(carType, plateNumber, 'en');
     });
- 
 });

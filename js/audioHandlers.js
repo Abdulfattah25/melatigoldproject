@@ -71,7 +71,7 @@ export function announceQueueNumber(queueNumber) {
 
     // Set voice preferences
     utterance.lang = "id-ID";
-    utterance.rate = 0.8; // Slower speed (0.1 to 1.0)
+    utterance.rate = 1; // Slower speed (0.1 to 1.0)
     utterance.pitch = 1.2; // Slightly higher pitch for female voice
 
     // Add slight pause between words

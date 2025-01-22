@@ -34,6 +34,9 @@
           </a>
         </div>
         <div class="left-nav">
+          <div class="hamburger-menu">
+            <i class="fas fa-bars"></i>
+          </div>
           <div class=""><span id="tgl" class="font-weight-bold"></span></div>
           <div class="dropdown">
             <button
@@ -76,15 +79,17 @@
           <div class="row mb-5">
             <div class="col text-center">
               <button class="btn btn-primary btn-lg" id="waitMessage">Informasi Tunggu</button>
+              <button class="btn btn-primary btn-lg" id="waitInformation">Waiting Information</button>
             </div>
             <div class="col text-center">
-              <button class="btn btn-primary btn-lg" id="takeMessage">Pengingat Nomor Antrian</button>
+              <button class="btn btn-primary btn-lg" id="takeMessage">Pengingat Antrian</button>
+              <button class="btn btn-primary btn-lg" id="takeQueue">Queue Reminder</button>
             </div>
           </div>
 
           <!-- Queue Management Section -->
           <div class="row">
-            <div class="col-md-6 mx-auto">
+            <div class="col-md-4 mx-auto">
               <div class="card">
                 <div class="card-body text-center">
                   <h5 class="card-title mb-4">Nomor Antrian Saat ini</h5>
@@ -92,6 +97,7 @@
 
                   <div class="action-buttons d-flex flex-column gap-3">
                     <button class="btn btn-success" id="callButton">Panggil Nomor Antrian</button>
+                    <button class="btn btn-success" id="callQueue">Call Queue Number</button>
                     <button class="btn btn-primary" id="handleButton">Sudah Dilayani</button>
                     <button class="btn btn-warning" id="delayQueueButton">Nomor Antrian Tertunda</button>
                     <button class="btn btn-secondary" id="customQueueButton">Custom Nomor Antrian</button>
@@ -100,14 +106,34 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-6 mx-auto">
+            <div class="col-md-4 mx-auto">
               <div class="card">
                 <div class="card-body text-center">
                   <h5 class="card-title mb-4">Nomor Antrian Tertunda</h5>
                   <div class="queue-display mb-4" id="delayQueueNumber"></div>
                   <div class="action-buttons d-flex flex-column gap-3">
                     <button class="btn btn-success" id="delayCallButton">Panggil Nomor Antrian</button>
+                    <button class="btn btn-success" id="delayCallQueue">Call Queue Number</button>
                     <button class="btn btn-primary" id="delayHandleButton">Sudah Dilayani</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mx-auto">
+              <div class="card">
+                <div class="card-body text-center">
+                  <h5 class="card-title mb-4">Informasi Kendaraan</h5>
+                  <div class="queue-display mb-4" id="inputText">
+                    <div class="form-group mb-4">
+                      <input type="text" class="form-control" id="carType" placeholder="Jenis Mobil" />
+                    </div>
+                    <div class="form-group mb-4">
+                      <input type="text" class="form-control" id="plateNumber" placeholder="Nomor Polisi" />
+                    </div>
+                  </div>
+                  <div class="action-buttons d-flex flex-column gap-3">
+                    <button class="btn btn-success" id="panggilInformasi">Umumkan Informasi</button>
+                    <button class="btn btn-success" id="callInformation">Announce Information</button>
                   </div>
                 </div>
               </div>
@@ -123,7 +149,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
               </div>
               <div class="modal-body">
-                <p>Yakin sudah dilayani?</p>
+                <p>Apakah Anda yakin nomor antrian ini sudah dilayani?</p>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
@@ -133,23 +159,21 @@
           </div>
         </div>
         <!-- Confirmation Modal for Delayed Queue -->
-<div class="modal fade" id="confirmDelayedModal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="confirmDelayedModalLabel">Konfirmasi</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        Apakah Anda yakin nomor antrian ini sudah dilayani?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-        <button type="button" class="btn btn-primary" id="confirmDelayedYes">Ya</button>
-      </div>
-    </div>
-  </div>
-</div>
+        <div class="modal fade" id="confirmDelayedModal" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="confirmDelayedModalLabel">Konfirmasi</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body">Apakah Anda yakin nomor antrian ini sudah dilayani?</div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                <button type="button" class="btn btn-primary" id="confirmDelayedYes">Ya</button>
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- Add this modal HTML before closing body tag -->
         <div class="modal fade" id="resetModal" tabindex="-1">
           <div class="modal-dialog">
@@ -159,7 +183,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
               </div>
               <div class="modal-body">
-                <p>Reset nomor antrian ke A001?</p>
+                <p>Reset nomor antrian ke A01?</p>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
@@ -168,7 +192,7 @@
             </div>
           </div>
         </div>
-        
+
         <!-- Add this modal HTML before closing body tag -->
         <div class="modal fade" id="customQueueModal" tabindex="-1">
           <div class="modal-dialog">
@@ -188,8 +212,8 @@
                   </select>
                 </div>
                 <div class="mb-3">
-                  <label for="queueNumber" class="form-label">Number (1-100)</label>
-                  <input type="number" class="form-control" id="queueNumberInput" min="1" max="100" />
+                  <label for="queueNumber" class="form-label">Number (1-50)</label>
+                  <input type="number" class="form-control" id="queueNumberInput" min="1" max="50" />
                 </div>
               </div>
               <div class="modal-footer">
@@ -199,7 +223,6 @@
             </div>
           </div>
         </div>
-
         <audio id="waitAudio" src="wait-message.mp3"></audio>
       </div>
       <aside class="sidebar">
@@ -253,5 +276,6 @@
       </aside>
     </main>
     <script type="module" src="js/melati.js"></script>
+
   </body>
 </html>

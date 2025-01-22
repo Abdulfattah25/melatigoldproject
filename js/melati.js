@@ -3,7 +3,7 @@ import { tambahBaris, updateNomorUrut } from "./inputService.js";
 import { addRowManualSale, enableRowDeletion } from "./analogsale.js";
 import { sidebarToggle } from "./sidebar.js";
 import { initializeBoxSale } from "./aksesorisSale.js";
-import { penerimaanHandler } from "./buyback.js";
+import { penerimaanHandler, formatNumber, getNumericValue } from "./buyback.js";
 import { dateHandler } from "./date.js";
 import { aksesorisSaleHandler } from "./inputAksesoris.js";
 import { initTableToggles, initPengeluaranInput } from "./summary.js";
@@ -13,10 +13,20 @@ import {
   playTakeQueueMessage,
   playQueueAnnouncement,
   announceQueueNumber,
-  announceVehicleMessage
+  announceVehicleMessage,
 } from "./audioHandlers.js";
-document.querySelector('.hamburger-menu').addEventListener('click', function() {
-  document.querySelector('.sidebar').classList.toggle('active');
+const hargaBeliInput = document.querySelector('input[name="hargaBeli"]');
+const hargaHariIniInput = document.querySelector('input[name="hargaHariIni"]');
+
+hargaBeliInput.addEventListener("input", function() {
+    formatNumber(this);
+});
+
+hargaHariIniInput.addEventListener("input", function() {
+    formatNumber(this);
+});
+document.querySelector(".hamburger-menu").addEventListener("click", function () {
+  document.querySelector(".sidebar").classList.toggle("active");
 });
 dateHandler.initializeDatepicker();
 document.addEventListener("DOMContentLoaded", () => {
@@ -95,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("delayCallButton").addEventListener("click", async () => {
     const delayedNumbers = queueManager.getDelayedQueue();
     if (delayedNumbers.length > 0) {
-      await playQueueAnnouncement(delayedNumbers[0], 'id');
+      await playQueueAnnouncement(delayedNumbers[0], "id");
     }
   });
 
@@ -103,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("delayCallQueue").addEventListener("click", async () => {
     const delayedNumbers = queueManager.getDelayedQueue();
     if (delayedNumbers.length > 0) {
-      await playQueueAnnouncement(delayedNumbers[0], 'en');
+      await playQueueAnnouncement(delayedNumbers[0], "en");
     }
   });
 
@@ -127,35 +137,34 @@ document.addEventListener("DOMContentLoaded", () => {
       modal.hide();
     }
   });
-  
 
   document.getElementById("takeMessage").addEventListener("click", () => {
-    playTakeQueueMessage('id');
+    playTakeQueueMessage("id");
   });
-  
+
   document.getElementById("takeQueue").addEventListener("click", () => {
-    playTakeQueueMessage('en');
+    playTakeQueueMessage("en");
   });
-  
+
   // Update wait message button event listener
 
   document.getElementById("waitMessage").addEventListener("click", () => {
-    playWaitMessageSequence('id');
+    playWaitMessageSequence("id");
   });
-  
+
   document.getElementById("waitInformation").addEventListener("click", () => {
-    playWaitMessageSequence('en');
+    playWaitMessageSequence("en");
   });
   document.getElementById("callButton").addEventListener("click", async () => {
     const currentQueue = queueDisplay.textContent;
-    await playQueueAnnouncement(currentQueue, 'id');
+    await playQueueAnnouncement(currentQueue, "id");
   });
-  
+
   document.getElementById("callQueue").addEventListener("click", async () => {
     const currentQueue = queueDisplay.textContent;
-    await playQueueAnnouncement(currentQueue, 'en');
+    await playQueueAnnouncement(currentQueue, "en");
   });
-   // Add Bootstrap JS to your page
+  // Add Bootstrap JS to your page
   document.getElementById("handleButton").addEventListener("click", () => {
     const modal = new bootstrap.Modal(document.getElementById("confirmModal"));
     modal.show();
@@ -192,30 +201,30 @@ document.addEventListener("DOMContentLoaded", () => {
     bootstrap.Modal.getInstance(document.getElementById("resetModal")).hide();
   });
 
-    const carTypeInput = document.getElementById("carType");
-    const plateNumberInput = document.getElementById("plateNumber");
-  
-    document.getElementById("panggilInformasi").addEventListener("click", () => {
-      const carType = carTypeInput.value;
-      const plateNumber = plateNumberInput.value;
-      
-      if (!carType || !plateNumber) {
-        alert("Mohon isi jenis mobil dan nomor polisi");
-        return;
-      }
-      
-      announceVehicleMessage(carType, plateNumber, 'id');
-    });
-  
-    document.getElementById("callInformation").addEventListener("click", () => {
-      const carType = carTypeInput.value;
-      const plateNumber = plateNumberInput.value;
-      
-      if (!carType || !plateNumber) {
-        alert("Please fill in car type and plate number");
-        return;
-      }
-      
-      announceVehicleMessage(carType, plateNumber, 'en');
-    });
+  const carTypeInput = document.getElementById("carType");
+  const plateNumberInput = document.getElementById("plateNumber");
+
+  document.getElementById("panggilInformasi").addEventListener("click", () => {
+    const carType = carTypeInput.value;
+    const plateNumber = plateNumberInput.value;
+
+    if (!carType || !plateNumber) {
+      alert("Mohon isi jenis mobil dan nomor polisi");
+      return;
+    }
+
+    announceVehicleMessage(carType, plateNumber, "id");
+  });
+
+  document.getElementById("callInformation").addEventListener("click", () => {
+    const carType = carTypeInput.value;
+    const plateNumber = plateNumberInput.value;
+
+    if (!carType || !plateNumber) {
+      alert("Please fill in car type and plate number");
+      return;
+    }
+    announceVehicleMessage(carType, plateNumber, "en");
+  });
+ 
 });

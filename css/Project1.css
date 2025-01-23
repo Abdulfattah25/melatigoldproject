@@ -82,6 +82,12 @@ align-items: center;
   box-shadow: 0 1em 1em -0.4em #591927;
   cursor: pointer;
 }
+.hamburger-menu {
+  display: none;
+  cursor: pointer;
+  font-size: 24px;
+  padding: 10px;
+}
 .boxServis {
   background-color: #fee440;
 }
@@ -141,12 +147,16 @@ align-items: center;
 main {
   display: flex;
   padding-top:3rem;
+  width: 100%;
 }
 .mainbar {
- width: 85%;
-  margin-left: 15%;
+  flex: 1;
   padding: 10px;
   margin-bottom: 20px;
+  margin-left: 200px; /* Match the sidebar width */
+}
+.mainbar-atr {
+  width: 100%;
 }
 .form-label, .dataBarang h6, .table th {
   font-size: 0.85rem;
@@ -170,14 +180,14 @@ table tbody {
 }
  
 
-aside {
-  width: 15%;
+aside{
+  width: 200px; /* Fixed width for sidebar */
   background: var(--warna);
   position: fixed;
-  height: 100%;
-  margin-left: 0;
- 
-  
+  height: 100vh;
+  left: 0;
+  top: 0;
+  padding-top: 3rem; /* Match the main padding-top */
 }
 aside ul {
   padding-left: 5px;
@@ -253,7 +263,6 @@ aside ul ul li {
   background: var(--warna);
 }
 
-
 .btn,
 .form-select {
   font-size: 0.8rem;
@@ -263,4 +272,80 @@ aside ul ul li {
 }
 .hidden {
   display: none;
+}
+@media screen and (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-250px); /* Hide sidebar by default */
+    z-index: 1000;
+    padding-top: 50px;
+  }
+
+  .sidebar.active {
+    transform: translateX(0); /* Show sidebar when active */
+  }
+
+  .mainbar {
+    margin-left: 0; /* Remove margin when sidebar is hidden */
+    width: 100%;
+  }
+
+  /* Hide date and dropdown menu */
+  .left-nav #tgl,
+  .left-nav .dropdown {
+    display: none;
+  }
+
+  /* Show hamburger menu */
+  .hamburger-menu {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* Make table scrollable horizontally */
+  .container {
+    padding: 10px;
+  }
+  
+  .table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Adjust form elements */
+  .form-select-sm,
+  .form-control-sm {
+    width: 140px;
+    min-width: 140px;
+  }
+  
+  /* Adjust table header and cells */
+  .table th,
+  .table td {
+    white-space: nowrap;
+    padding: 8px;
+  }
+  
+  /* Make the button full width */
+  .btn-primary {
+    width: 100%;
+    margin: 10px 0;
+  }
+  
+  /* Adjust heading sizes */
+  h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  h6 {
+    font-size: 1rem;
+  }
+  
+  /* Adjust top section spacing */
+  .maintop {
+    margin-bottom: 15px;
+  }
 }

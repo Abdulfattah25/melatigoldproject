@@ -52,16 +52,23 @@ document.addEventListener("DOMContentLoaded", function () {
     if (manualTable && addButton) {
       addRowManualSale("btnTambah", "tableManual");
     }
-    enableRowDeletion(["tableBarang", "tableKotak", "tableManual", "tableTambahAksesoris"]);
+    enableRowDeletion([
+      "tableBarang",
+      "tableKotak",
+      "tableManual",
+      "tableTambahAksesoris",
+    ]);
   } catch (error) {
     console.log("AnalogSale:", error);
   }
   // BoxSale functionality
   initializeBoxSale();
   // Tambah baris dan Fungsi Penerimaan Buyback
-  document.getElementById("btnTambahPenerimaan").addEventListener("click", () => {
-    tambahBaris("#tablePenerimaan tbody");
-  });
+  document
+    .getElementById("btnTambahPenerimaan")
+    .addEventListener("click", () => {
+      tambahBaris("#tablePenerimaan tbody");
+    });
   penerimaanHandler.initializeForm();
 });
 // Add jQuery ready check for datepicker
@@ -80,7 +87,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updateDisplays() {
     queueDisplay.textContent = queueManager.getCurrentQueue();
-    delayQueueDisplay.textContent = queueManager.getDelayedQueue().join(", ") || "-";
+    delayQueueDisplay.textContent =
+      queueManager.getDelayedQueue().join(", ") || "-";
   }
 
   updateDisplays();
@@ -124,7 +132,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (delayedNumbers.length > 0) {
       queueManager.removeFromDelayedQueue(delayedNumbers[0]);
       updateDisplays();
-      const modal = bootstrap.Modal.getInstance(document.getElementById("confirmDelayedModal"));
+      const modal = bootstrap.Modal.getInstance(
+        document.getElementById("confirmDelayedModal")
+      );
       modal.hide();
     }
   });
@@ -167,7 +177,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }); // Add event listeners for custom queue
 
   document.getElementById("customQueueButton").addEventListener("click", () => {
-    const modal = new bootstrap.Modal(document.getElementById("customQueueModal"));
+    const modal = new bootstrap.Modal(
+      document.getElementById("customQueueModal")
+    );
     modal.show();
   });
 
@@ -177,7 +189,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (number >= 1 && number <= 100) {
       queueDisplay.textContent = queueManager.setCustomQueue(letter, number);
-      bootstrap.Modal.getInstance(document.getElementById("customQueueModal")).hide();
+      bootstrap.Modal.getInstance(
+        document.getElementById("customQueueModal")
+      ).hide();
     } else {
       alert("Please enter a valid number between 1 and 100");
     }

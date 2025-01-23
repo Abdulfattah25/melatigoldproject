@@ -15,16 +15,7 @@ import {
   announceQueueNumber,
   announceVehicleMessage,
 } from "./audioHandlers.js";
-const hargaBeliInput = document.querySelector('input[name="hargaBeli"]');
-const hargaHariIniInput = document.querySelector('input[name="hargaHariIni"]');
 
-hargaBeliInput.addEventListener("input", function() {
-    formatNumber(this);
-});
-
-hargaHariIniInput.addEventListener("input", function() {
-    formatNumber(this);
-});
 document.querySelector(".hamburger-menu").addEventListener("click", function () {
   document.querySelector(".sidebar").classList.toggle("active");
 });

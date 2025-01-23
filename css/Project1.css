@@ -155,6 +155,9 @@ main {
   margin-bottom: 20px;
   margin-left: 200px; /* Match the sidebar width */
 }
+.mainbar-atr {
+  width: 100%;
+}
 .form-label, .dataBarang h6, .table th {
   font-size: 0.85rem;
 }

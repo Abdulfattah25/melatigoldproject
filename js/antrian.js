@@ -1,6 +1,5 @@
 export class QueueManager {
     constructor() {this.letters = ["A", "B", "C", "D"];
-
         const savedState = localStorage.getItem("queueState");
         const savedDelayedQueue = localStorage.getItem("delayedQueue");
         if (savedState) {
@@ -77,7 +76,29 @@ export class QueueManager {
         this.saveState();
         return this.getCurrentQueue();
       }
-
+      getNextQueue() {
+        const nextState = {
+          letter: this.currentLetter,
+          number: this.currentNumber + 1,
+          block: this.currentBlock
+        };
+    
+        if (nextState.number > 10) {
+          nextState.number = 1;
+          nextState.letter++;
+    
+          if (nextState.letter >= this.letters.length) {
+            nextState.letter = 0;
+            nextState.block++;
+    
+            if (nextState.block >= 5) {
+              nextState.block = 0;
+            }
+          }
+        }
+    
+        return `${this.letters[nextState.letter]}${this.formatNumber(nextState.number + nextState.block * 10)}`;
+      }
       setCustomQueue(letter, number) {
         const letterIndex = this.letters.indexOf(letter);
         if (letterIndex === -1 || number < 1 || number > 50) {

@@ -1,5 +1,5 @@
 // Form handling module
-export const penerimaanHandler = {
+const penerimaanHandler = {
   initializeForm() {
     document.getElementById("penerimaanForm").addEventListener("submit", this.handleSubmit);
     document.getElementById("btnTambahPenerimaan").addEventListener("click", this.handleTambahPenerimaan);
@@ -186,25 +186,28 @@ export const penerimaanHandler = {
   },
 
   generateResultHTML(index, totalRows, kadar, row, persentasePenerimaan, hargaPenerimaan) {
+    // Format harga penerimaan
+    const formattedHargaPenerimaan = formatCurrency(hargaPenerimaan);
+
     return `
         <div class="result-item ${index !== totalRows - 1 ? 'border-bottom mb-3 pb-3' : ''}">
-            <h6 class="fw-bold">Data ${index + 1}</h6>
+            <h6 class="fw-bold">${index + 1}</h6>
             <div class="row">
                 <div class="col-12">
                     <p class="mb-2"><strong>Kadar:</strong> ${kadar}</p>
                     <p class="mb-2"><strong>Kondisi:</strong> ${row.querySelector('select[name="kondisiBarang"]').options[row.querySelector('select[name="kondisiBarang"]').selectedIndex].text}</p>
                     <p class="mb-2"><strong>Persentase Penerimaan:</strong> ${persentasePenerimaan}%</p>
-                    <p class="mb-0"><strong>Harga Penerimaan:</strong> Rp ${Math.round(hargaPenerimaan).toLocaleString('id-ID')}</p>
+                    <p class="mb-0"><strong>Harga Penerimaan Per Gram:</strong> Rp ${formattedHargaPenerimaan}</p>
                 </div>
             </div>
         </div>
     `;
 },
 
-  displayResults(resultsHTML) {
+displayResults(resultsHTML) {
     const resultsContainer = document.getElementById("results");
     if (resultsContainer) {
-      resultsContainer.innerHTML = resultsHTML;
+        resultsContainer.innerHTML = resultsHTML;
     }
 
     const modalMessage = document.getElementById("modalMessage");
@@ -212,5 +215,23 @@ export const penerimaanHandler = {
 
     const resultModal = new bootstrap.Modal(document.getElementById("resultModal"));
     resultModal.show();
-  },
+}
 };
+
+export function formatNumber(input) {
+let value = input.value.replace(/\D/g, "");
+input.value = formatCurrency(value);
+}
+
+export function getNumericValue(formattedValue) {
+return formattedValue.replace(/\./g, "");
+}
+
+function formatCurrency(value) {
+return new Intl.NumberFormat("id-ID", {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+    useGrouping: true
+}).format(value);
+}
+export { penerimaanHandler };

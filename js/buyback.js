@@ -151,14 +151,13 @@ const penerimaanHandler = {
         <td>
           <select id="kondisiBarang" name="kondisiBarang" class="form-select form-select-sm" required>
             <option value="" disabled selected>Pilih</option>
-            <option value="1">1. Mengkilap, Mulus, Banyak Peminat</option>
-            <option value="2">2. Sedikit Kusam, Sedikit Baret, Model Bagus</option>
-            <option value="3">3. Kusam, Banyak Baret, Model Kurang Bagus</option>
+            <option value="1">Mengkilap, Mulus, Banyak Peminat</option>
+            <option value="2">Sedikit Kusam, Sedikit Baret, Model Bagus</option>
+            <option value="3">Kusam, Banyak Baret, Model Kurang Bagus</option>
           </select>
         </td>
         <td>
             <input
-                type="number"
                 name="hargaBeli"
                 class="form-control form-control-sm"
                 placeholder="Harga beli"
@@ -168,7 +167,6 @@ const penerimaanHandler = {
         </td>
         <td>
             <input
-                type="number"
                 name="hargaHariIni"
                 class="form-control form-control-sm"
                 placeholder="Harga hari ini"
@@ -191,11 +189,11 @@ const penerimaanHandler = {
             <h6 class="fw-bold">${index + 1}</h6>
             <div class="row">
                 <div class="col-12">
-                    <p class="mb-2"><strong>Nama Barang:</strong> ${namaBarang}</p>
-                    <p class="mb-2"><strong>Kadar:</strong> ${kadar}</p>
-                    <p class="mb-2"><strong>Kondisi:</strong> ${row.querySelector('select[name="kondisiBarang"]').options[row.querySelector('select[name="kondisiBarang"]').selectedIndex].text}</p>
-                    <p class="mb-2"><strong>Persentase Penerimaan:</strong> ${persentasePenerimaan}%</p>
-                    <p class="mb-0"><strong>Harga Penerimaan Per Gram:</strong> Rp ${formattedHargaPenerimaan}</p>
+                    <p class="mb-2">Nama Barang:${namaBarang}</p>
+                    <p class="mb-2">Kadar:${kadar}</p>
+                    <p class="mb-2">Kondisi:${row.querySelector('select[name="kondisiBarang"]').options[row.querySelector('select[name="kondisiBarang"]').selectedIndex].text}</p>
+                    <p class="mb-2">Persentase Penerimaan:${persentasePenerimaan}%</p>
+                    <p class="mb-0">Harga Penerimaan Per Gram:Rp ${formattedHargaPenerimaan}</p>
                 </div>
             </div>
         </div>

@@ -47,7 +47,7 @@ function printModal() {
                   text-align: center; 
               }
               .header {
-                  font-size: 14px;
+                  font-size: 16px;
                   font-weight: bold;
                   margin-bottom: 10px;
               }
@@ -61,7 +61,7 @@ function printModal() {
               }
               p { 
                   margin: 4px 0;
-                  font-size: 12px;
+                  font-size: 16px;
               }
               @media print {
                   * {

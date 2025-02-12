@@ -31,7 +31,7 @@ function printModal() {
           <title>Print</title>
           <style>
               @page {
-                  size: 80mm auto;  /* Width: 80mm, Height: auto */
+                  size: 80mm auto;
                   margin: 0mm;
               }
               body { 
@@ -49,22 +49,36 @@ function printModal() {
               .header {
                   font-size: 16px;
                   font-weight: bold;
-                  margin-bottom: 10px;
+                  margin-bottom: 2px;  /* Reduced from 8px */
               }
               .result-item { 
-                  margin-bottom: 8px;
-                  padding-bottom: 8px;
+                  margin-top: 2px;     /* Added to control top spacing */
+                  margin-bottom: 4px;   /* Reduced from 6px */
+                  padding-bottom: 4px;  /* Reduced from 6px */
                   border-bottom: 1px dashed #000;
               }
               .fw-bold { 
-                  font-weight: bold; 
+                  font-size: 14px;
+                  font-weight: bold;
+                  margin: 2px 0;       /* Reduced from 4px */
+              }
+              h6 {
+                  margin: 2px 0;       /* Added to control number spacing */
+                  font-size: 14px;
               }
               p { 
-                  margin: 4px 0;
-                  font-size: 16px;
+                  margin: 2px 0;
+                  font-size: 14px;
+                  line-height: 1.2;    /* Reduced from 1.3 */
+              }
+              strong {
+                  font-size: 14px;
               }
               @media print {
                   * {
+                      font-size: 14px;
+                  }
+                  .header {
                       font-size: 16px;
                   }
               }
@@ -90,6 +104,8 @@ function printModal() {
       };
   };
 }
+
+
 document.querySelector(".hamburger-menu").addEventListener("click", function () {
   document.querySelector(".sidebar").classList.toggle("active");
 });

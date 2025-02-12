@@ -189,11 +189,11 @@ const penerimaanHandler = {
             <h6 class="fw-bold">${index + 1}</h6>
             <div class="row">
                 <div class="col-12">
-                    <p class="mb-2">Nama Barang:${namaBarang}</p>
-                    <p class="mb-2">Kadar:${kadar}</p>
-                    <p class="mb-2">Kondisi:${row.querySelector('select[name="kondisiBarang"]').options[row.querySelector('select[name="kondisiBarang"]').selectedIndex].text}</p>
-                    <p class="mb-2">Persentase Penerimaan:${persentasePenerimaan}%</p>
-                    <p class="mb-0">Harga Penerimaan Per Gram:Rp ${formattedHargaPenerimaan}</p>
+                    <p class="mb-2"><strong>Nama Barang:</strong> ${namaBarang}</p>
+                    <p class="mb-2"><strong>Kadar:</strong> ${kadar}</p>
+                    <p class="mb-2"><strong>Kondisi:</strong> ${row.querySelector('select[name="kondisiBarang"]').options[row.querySelector('select[name="kondisiBarang"]').selectedIndex].text}</p>
+                    <p class="mb-2"><strong>Persentase Penerimaan:</strong> ${persentasePenerimaan}%</p>
+                    <p class="mb-0"><strong>Harga Penerimaan Per Gram:</strong> Rp ${formattedHargaPenerimaan}</p>
                 </div>
             </div>
         </div>

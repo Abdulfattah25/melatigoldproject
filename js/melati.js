@@ -16,6 +16,80 @@ import {
   announceVehicleMessage,
 } from "./audioHandlers.js";
 
+document.addEventListener('DOMContentLoaded', function() {
+  const printButton = document.querySelector('.modal-footer .btn-primary');
+  printButton.addEventListener('click', printModal);
+});
+
+function printModal() {
+  const modalContent = document.getElementById("modalMessage").innerHTML;
+  
+  const printContent = `
+      <!DOCTYPE html>
+      <html>
+      <head>
+          <title>Print</title>
+          <style>
+              @page {
+                  size: 80mm auto;  /* Width: 80mm, Height: auto */
+                  margin: 0mm;
+              }
+              body { 
+                  font-family: Arial, sans-serif;
+                  width: 80mm;
+                  margin: 0;
+                  padding: 5mm;
+              }
+              .container { 
+                  width: 70mm;
+              }
+              .text-center { 
+                  text-align: center; 
+              }
+              .header {
+                  font-size: 14px;
+                  font-weight: bold;
+                  margin-bottom: 10px;
+              }
+              .result-item { 
+                  margin-bottom: 8px;
+                  padding-bottom: 8px;
+                  border-bottom: 1px dashed #000;
+              }
+              .fw-bold { 
+                  font-weight: bold; 
+              }
+              p { 
+                  margin: 4px 0;
+                  font-size: 12px;
+              }
+              @media print {
+                  * {
+                      font-size: 12px;
+                  }
+              }
+          </style>
+      </head>
+      <body>
+          <div class="container">
+              <div class="header text-center">Hasil Perhitungan Buyback Perhiasan</div>
+              ${modalContent}
+          </div>
+      </body>
+      </html>
+  `;
+
+  const printWindow = window.open('', '_blank');
+  printWindow.document.write(printContent);
+  printWindow.document.close();
+
+  printWindow.onload = function() {
+      printWindow.print();
+      printWindow.onafterprint = function() {
+          printWindow.close();
+      };
+  };
+}
 document.querySelector(".hamburger-menu").addEventListener("click", function () {
   document.querySelector(".sidebar").classList.toggle("active");
 });

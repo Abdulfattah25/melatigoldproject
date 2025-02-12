@@ -142,23 +142,19 @@ const penerimaanHandler = {
         </td>
         <td>
             <select name="asalToko" class="form-select form-select-sm" required>
-                <option value="" disabled selected>Pilih Asal Toko</option>
+                <option value="" disabled selected>Pilih</option>
                 <option value="Toko Melati">Toko Melati</option>
                 <option value="Luar Toko">Luar Toko</option>
             </select>
         </td>
+        <td><input type="text" class="form-control" placeholder="Nama Barang"></td>
         <td>
-            <select id="kondisiBarang" name="kondisiBarang" class="form-select form-select-sm" required>
-                <option value="" disabled selected>Pilih Kondisi Barang</option>
-                <option value="1">1. Mengkilap, Mulus, Banyak Peminat</option>
-                <option value="2">2. Mengkilap, Sedikit Baret, Banyak Peminat</option>
-                <option value="3">3. Sedikit Kusam, Sedikit Baret, Banyak Peminat</option>
-                <option value="4">4. Sedikit Kusam,Banyak Baret, Banyak Peminat</option>
-                <option value="5">5. Kusam, Sedikit Baret, Banyak Peminat</option>
-                <option value="6">6. Kusam, Banyak Baret, Banyak Peminat</option>
-                <option value="7">7. Sedikit Kusam, Sedikit Baret, Sedikit Peminat</option>
-                <option value="8">8. Kusam, Banyak Baret, Sedikit Peminat</option>
-            </select>
+          <select id="kondisiBarang" name="kondisiBarang" class="form-select form-select-sm" required>
+            <option value="" disabled selected>Pilih</option>
+            <option value="1">1. Mengkilap, Mulus, Banyak Peminat</option>
+            <option value="2">2. Sedikit Kusam, Sedikit Baret, Model Bagus</option>
+            <option value="3">3. Kusam, Banyak Baret, Model Kurang Bagus</option>
+          </select>
         </td>
         <td>
             <input
@@ -188,12 +184,14 @@ const penerimaanHandler = {
   generateResultHTML(index, totalRows, kadar, row, persentasePenerimaan, hargaPenerimaan) {
     // Format harga penerimaan
     const formattedHargaPenerimaan = formatCurrency(hargaPenerimaan);
+    const namaBarang = row.querySelector('input[placeholder="Nama Barang"]').value;
 
     return `
         <div class="result-item ${index !== totalRows - 1 ? 'border-bottom mb-3 pb-3' : ''}">
             <h6 class="fw-bold">${index + 1}</h6>
             <div class="row">
                 <div class="col-12">
+                    <p class="mb-2"><strong>Nama Barang:</strong> ${namaBarang}</p>
                     <p class="mb-2"><strong>Kadar:</strong> ${kadar}</p>
                     <p class="mb-2"><strong>Kondisi:</strong> ${row.querySelector('select[name="kondisiBarang"]').options[row.querySelector('select[name="kondisiBarang"]').selectedIndex].text}</p>
                     <p class="mb-2"><strong>Persentase Penerimaan:</strong> ${persentasePenerimaan}%</p>

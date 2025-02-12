@@ -403,3 +403,22 @@ footer {
     margin-bottom: 15px;
   }
 }
+@media print {
+  body * {
+      visibility: hidden;
+  }
+  
+  .modal-content * {
+      visibility: visible;
+  }
+  
+  .modal-content {
+      position: absolute;
+      left: 0;
+      top: 0;
+  }
+  
+  .modal-footer {
+      display: none;
+  }
+}

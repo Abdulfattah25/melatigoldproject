@@ -37,7 +37,7 @@ function printModal() {
               body { 
                   font-family: Arial, sans-serif;
                   width: 80mm;
-                  margin: 0;
+                  margin-left: 5px;
                   padding: 5mm;
               }
               .container { 
@@ -65,7 +65,7 @@ function printModal() {
               }
               @media print {
                   * {
-                      font-size: 12px;
+                      font-size: 16px;
                   }
               }
           </style>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistem Absensi Karyawan</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .replacement-type {
+    margin-bottom: 15px;
+}
+
+.replacement-detail {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.replacement-detail label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.replacement-detail input {
+    margin-bottom: 10px;
+}
+
+#replacementHours {
+    width: 100px;
+}
+* {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      h2 {
+        margin-bottom: 15px;
+      }
+
+      .scanner-section,
+      .attendance-section,
+      .leave-section,
+      .leave-list-section {
+        margin-bottom: 40px;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+
+      input[type="text"],
+      input[type="date"],
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+      }
+
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+
+      #scanResult {
+        margin-top: 10px;
+        padding: 10px;
+        display: none;
+      }
+
+      .success {
+        background-color: #dff0d8;
+        color: #3c763d;
+        border: 1px solid #d6e9c6;
+      }
+
+      .error {
+        background-color: #f2dede;
+        color: #a94442;
+        border: 1px solid #ebccd1;
+      }
+      .pending-leaves-section,
+      .leave-history-section {
+        margin-bottom: 40px;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+
+      .action-buttons {
+        display: flex;
+        gap: 10px;
+      }
+
+      .approve-btn {
+        background-color: #4caf50;
+      }
+
+      .reject-btn {
+        background-color: #f44336;
+      }
+
+      .status-pending {
+        color: #ff9800;
+        font-weight: bold;
+      }
+
+      .status-approved {
+        color: #4caf50;
+        font-weight: bold;
+      }
+
+      .status-rejected {
+        color: #f44336;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Sistem Absensi Karyawan</h1>
+
+      <!-- Barcode Scanner Section -->
+      <div class="scanner-section">
+        <h2>Scan Barcode</h2>
+        <input type="text" id="barcodeInput" placeholder="Scan barcode disini..." autofocus />
+        <div id="scanResult"></div>
+      </div>
+
+      <!-- Attendance List -->
+      <div class="attendance-section">
+        <h2>Daftar Kehadiran Hari Ini</h2>
+        <table id="attendanceTable">
+          <thead>
+            <tr>
+              <th>ID Karyawan</th>
+              <th>Nama</th>
+              <th>Waktu Masuk</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="attendanceList"></tbody>
+        </table>
+      </div>
+
+      <div class="leave-section">
+        <h2>Form Pengajuan Izin</h2>
+        <form id="leaveForm">
+            <input type="text" id="employeeId" placeholder="ID Karyawan" required>
+            <input type="date" id="leaveDate" required>
+            <textarea id="leaveReason" placeholder="Alasan izin" required></textarea>
+            
+            <div class="replacement-type">
+                <label>Jenis Pengganti:</label>
+                <select id="replacementType" required>
+                    <option value="">Pilih Jenis Pengganti</option>
+                    <option value="libur">Ganti Libur</option>
+                    <option value="jam">Ganti Jam</option>
+                </select>
+            </div>
+    
+            <div id="replacementLibur" class="replacement-detail" style="display: none;">
+                <label>Tanggal Ganti Libur:</label>
+                <input type="date" id="replacementDate">
+            </div>
+    
+            <div id="replacementJam" class="replacement-detail" style="display: none;">
+                <label>Tanggal Ganti Jam:</label>
+                <input type="date" id="replacementHourDate">
+                <label>Jumlah Jam Pengganti:</label>
+                <input type="number" id="replacementHours" min="1" max="12" placeholder="Jumlah jam">
+            </div>
+    
+            <button type="submit">Ajukan Izin</button>
+        </form>
+    </div>
+
+      <!-- Leave List -->
+      <div class="leave-list-section">
+        <h2>Daftar Izin Karyawan</h2>
+        <table id="leaveTable">
+            <thead>
+                <tr>
+                    <th>ID Karyawan</th>
+                    <th>Nama</th>
+                    <th>Tanggal Izin</th>
+                    <th>Alasan</th>
+                    <th>Jenis Pengganti</th>
+                    <th>Detail Pengganti</th>
+                    <th>Status Pengajuan</th>
+                </tr>
+            </thead>
+            <tbody id="leaveList"></tbody>
+        </table>
+    </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+      // Sample employee data (In real application, this would come from a database)
+      const employees = [
+        { id: "EMP001", name: "John Doe", barcode: "123456" },
+        { id: "EMP002", name: "Jane Smith", barcode: "789012" },
+      ];
+
+      // Store attendance and leave records
+      let attendanceRecords = [];
+      let leaveRecords = [];
+
+      // Handle barcode scanning
+      document.getElementById("barcodeInput").addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+          const barcode = this.value;
+          const employee = employees.find((emp) => emp.barcode === barcode);
+          const scanResult = document.getElementById("scanResult");
+
+          if (employee) {
+            const now = new Date();
+            attendanceRecords.push({
+              employeeId: employee.id,
+              name: employee.name,
+              timeIn: now,
+              status: "Hadir",
+            });
+
+            scanResult.innerHTML = `Absensi berhasil: ${employee.name}`;
+            scanResult.className = "success";
+            updateAttendanceTable();
+          } else {
+            scanResult.innerHTML = "Barcode tidak valid!";
+            scanResult.className = "error";
+          }
+
+          scanResult.style.display = "block";
+          this.value = "";
+
+          // Hide result after 3 seconds
+          setTimeout(() => {
+            scanResult.style.display = "none";
+          }, 3000);
+        }
+      });
+
+      // Update leave form submission
+document.getElementById('leaveForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const employeeId = document.getElementById('employeeId').value;
+    const employee = employees.find(emp => emp.id === employeeId);
+    
+    if (employee) {
+        const leaveDate = document.getElementById('leaveDate').value;
+        const leaveReason = document.getElementById('leaveReason').value;
+        const replacementType = document.getElementById('replacementType').value;
+        
+        let replacementDetails = {};
+        
+        if (replacementType === 'libur') {
+            replacementDetails = {
+                type: 'libur',
+                date: document.getElementById('replacementDate').value
+            };
+        } else if (replacementType === 'jam') {
+            replacementDetails = {
+                type: 'jam',
+                date: document.getElementById('replacementHourDate').value,
+                hours: document.getElementById('replacementHours').value
+            };
+        }
+        
+        const newLeave = {
+            id: 'LEAVE' + Date.now(),
+            employeeId: employee.id,
+            name: employee.name,
+            leaveDate: leaveDate,
+            reason: leaveReason,
+            replacementType: replacementType,
+            replacementDetails: replacementDetails,
+            status: 'Pending',
+            submitDate: new Date().toLocaleDateString()
+        };
+        
+        leaveRecords.push(newLeave);
+        localStorage.setItem('leaveRecords', JSON.stringify(leaveRecords));
+        updateLeaveTable();
+        this.reset();
+    }
+});
+
+      // Update attendance table
+      function updateAttendanceTable() {
+        const tbody = document.getElementById("attendanceList");
+        tbody.innerHTML = "";
+
+        attendanceRecords.forEach((record) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${record.employeeId}</td>
+            <td>${record.name}</td>
+            <td>${record.timeIn.toLocaleTimeString()}</td>
+            <td>${record.status}</td>
+        `;
+          tbody.appendChild(row);
+        });
+      }
+
+      // Update leave table display
+function updateLeaveTable() {
+    const tbody = document.getElementById('leaveList');
+    tbody.innerHTML = '';
+    
+    leaveRecords.forEach(record => {
+        const replacementInfo = getReplacementInfo(record);
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${record.employeeId}</td>
+            <td>${record.name}</td>
+            <td>${record.leaveDate}</td>
+            <td>${record.reason}</td>
+            <td>${record.replacementType === 'libur' ? 'Ganti Libur' : 'Ganti Jam'}</td>
+            <td>${replacementInfo}</td>
+            <td class="status-${record.status.toLowerCase()}">${record.status}</td>
+        `;
+        tbody.appendChild(row);
+    });
+}
+
+// Helper function to format replacement information
+function getReplacementInfo(record) {
+    if (record.replacementType === 'libur') {
+        return `Ganti libur pada tanggal ${record.replacementDetails.date}`;
+    } else if (record.replacementType === 'jam') {
+        return `Ganti ${record.replacementDetails.hours} jam pada tanggal ${record.replacementDetails.date}`;
+    }
+    return '-';
+}
+      // Initialize tables
+      updateAttendanceTable();
+      updateLeaveTable();
+    </script>
+  </body>
+</html>
+*

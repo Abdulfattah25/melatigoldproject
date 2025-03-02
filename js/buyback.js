@@ -65,28 +65,18 @@ const penerimaanHandler = {
 
   getHighPersentase(kondisiBarang) {
     const persentaseMap = {
-      1: 99,
-      2: 97,
-      3: 95,
-      4: 93,
-      5: 90,
-      6: 90,
-      7: 90,
-      8: 90,
+      1: 95,
+      2: 93,
+      3: 90,
     };
     return persentaseMap[kondisiBarang] || 90;
   },
 
   getLowPersentase(kondisiBarang) {
     const persentaseMap = {
-      1: 95,
-      2: 90,
-      3: 88,
-      4: 86,
-      5: 84,
-      6: 75,
-      7: 72,
-      8: 70,
+      1: 90,
+      2: 85,
+      3: 80,
     };
     return persentaseMap[kondisiBarang] || 70;
   },
@@ -96,11 +86,6 @@ const penerimaanHandler = {
       1: 72,
       2: 70,
       3: 65,
-      4: 60,
-      5: 60,
-      6: 60,
-      7: 60,
-      8: 60,
     };
     return persentaseMap[kondisiBarang] || 60;
   },

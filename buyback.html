@@ -121,9 +121,9 @@
                     <td>
                       <select id="kondisiBarang" name="kondisiBarang" class="form-select form-select-sm" required>
                         <option value="" disabled selected>Pilih</option>
-                        <option value="1">Mengkilap, Mulus, Banyak Peminat</option>
-                        <option value="2">Sedikit Kusam, Sedikit Baret, Model Bagus</option>
-                        <option value="3">Kusam, Banyak Baret, Model Kurang Bagus</option>
+                        <option value="1">1. Mengkilap, Mulus, Model Bagus</option>
+                        <option value="2">2. Sedikit Kusam, Sedikit Baret, Model Bagus</option>
+                        <option value="3">3. Kusam & Banyak Baret</option>
                       </select>
                     </td>
                     <td>
@@ -153,6 +153,29 @@
             </div>
           </form>
         </div>
+        <div class="container mb-4">
+          <div class="card">
+            <div class="card-header">
+              <h6 class="fw-bold mb-0 tangerine-bold">Catatan Penting Buyback</h6>
+            </div>
+            <div class="card-body">
+              <h6 class="fw-bold">Kode Kategori Kondisi Barang:</h6>
+              <ul>
+                <li>K1 = Kondisi Sangat Baik (Mengkilap, Mulus, Model Bagus)</li>
+                <li>K2 = Kondisi Sedang (Sedikit Kusam, Sedikit Baret, Model Bagus)</li>
+                <li>K3 = Kondisi Kurang (Kusam & Banyak Baret)</li>
+              </ul>
+              
+              <h6 class="fw-bold mt-3">Aturan Penentuan Harga:</h6>
+              <p>Untuk pembelian beberapa barang dengan kondisi berbeda, harga mengikuti kondisi terendah untuk menyeragamkan nilai buyback. Contoh:</p>
+              <ul>
+                <li>Jika ada barang K1 dan K2, maka semua barang diharga mengikuti K2</li>
+                <li>Jika ada barang K1, K2 dan K3, maka semua barang diharga mengikuti K3</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
 
         <!-- Modal -->
         <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">

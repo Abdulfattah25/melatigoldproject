@@ -45,7 +45,7 @@
           <ul class="d-flex justify-content-center gap-3">
             <li class="dropdown">
               <a class="text-decoration-none text-dark dropdown-toggle" href="#" id="documentationLink" data-bs-toggle="dropdown">
-                <i class="fa-solid fa-users"></i> Pengajuan Staff
+                <i class="fa-solid fa-users"></i> Pengajuan Staff <i class="fa-solid fa-chevron-down"></i>
               </a>
               <div class="dropdown-menu">
                 <a class="dropdown-item" href="pengajuan.html">
@@ -56,15 +56,28 @@
                 </a>
               </div>
             </li>
-            <li>
-              <a class="text-decoration-none text-dark" href="pengguna.html">
-                <i class="fa-solid fa-gear"></i> Pengaturan
+            <li class="dropdown">
+              <a class="text-decoration-none text-dark dropdown-toggle" href="#" id="documentationLink" data-bs-toggle="dropdown">
+                <i class="fa-solid fa-gear"></i> Pengaturan <i class="fa-solid fa-chevron-down ms-1"></i>
               </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="pengguna.html.html">
+                  <i class="fa-solid fa-file-contract"></i> Tambah User 
+                </a>
+              </div>
             </li>
-            <li>
-              <a class="text-decoration-none text-dark" href="laporan.html">
-                <i class="fa-solid fa-file-lines"></i> Laporan
+            <li class="dropdown">
+              <a class="text-decoration-none text-dark dropdown-toggle" href="#" id="documentationLink" data-bs-toggle="dropdown">
+                <i class="fa-solid fa-file-lines"></i> Laporan <i class="fa-solid fa-chevron-down ms-1"></i>
               </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="pengguna.html.html">
+                  <i class="fa-solid fa-file-contract"></i> Laporan  Kehadiran
+                </a>
+                <a class="dropdown-item" href="pengguna.html.html">
+                  <i class="fa-solid fa-file-contract"></i> Laporan  Izin
+                </a>
+              </div>
             </li>
           </ul>
         </div>
@@ -116,7 +129,7 @@
         <div class="maintop">
           <p>Sistem Absensi Karyawan Staff Melati</p>
         </div>
-        <div class="container">
+        <div class="container mt-1">
           <div class="row">
             <!-- Barcode Scanner Section - 4 parts -->
             <div class="scanner-section">
@@ -199,59 +212,11 @@
       </aside>
     </main>
     <script type="module" src="js/melati.js"></script>
-    <script src="script.js"></script>
     <script>
       let employees = JSON.parse(localStorage.getItem('employees')) || [
   { id: "EMP001", name: "John Doe", barcode: "123456" },
   { id: "EMP002", name: "Jane Smith", barcode: "789012" }
 ];
-      // Add these functions after the existing script
-function saveEmployees() {
-  localStorage.setItem('employees', JSON.stringify(employees));
-}
-
-function updateStaffTable() {
-  const tbody = document.getElementById('staffList');
-  tbody.innerHTML = '';
-  
-  employees.forEach(employee => {
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      <td>${employee.id}</td>
-      <td>${employee.name}</td>
-      <td>${employee.barcode}</td>
-      <td>
-        <button class="btn btn-danger btn-sm" onclick="deleteStaff('${employee.id}')">
-          Hapus
-        </button>
-      </td>
-    `;
-    tbody.appendChild(row);
-  });
-}
-
-function deleteStaff(id) {
-  employees = employees.filter(emp => emp.id !== id);
-  saveEmployees();
-  updateStaffTable();
-}
-
-// Add form submission handler
-document.getElementById('staffForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  
-  const newStaff = {
-    id: document.getElementById('staffId').value,
-    name: document.getElementById('staffName').value,
-    barcode: document.getElementById('staffBarcode').value
-  };
-  
-  employees.push(newStaff);
-  saveEmployees();
-  updateStaffTable();
-  this.reset();
-});
-
       // Store attendance and leave records
       let attendanceRecords = [];
       let leaveRecords = [];
@@ -289,90 +254,6 @@ document.getElementById('staffForm').addEventListener('submit', function(e) {
           }, 3000);
         }
       });
-
-// Event listener for replacement type selection
-document.getElementById('replacementType').addEventListener('change', function() {
-    const liburSection = document.getElementById('replacementLibur');
-    const jamSection = document.getElementById('replacementJam');
-    
-    if (this.value === 'libur') {
-        liburSection.style.display = 'block';
-        jamSection.style.display = 'none';
-    } else if (this.value === 'jam') {
-        liburSection.style.display = 'none';
-        jamSection.style.display = 'block';
-    } else {
-        liburSection.style.display = 'none';
-        jamSection.style.display = 'none';
-    }
-});
-
-      // Update leave form submission
-document.getElementById('leaveForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const employeeId = document.getElementById('employeeId').value;
-    const employee = employees.find(emp => emp.id === employeeId);
-    
-    if (employee) {
-        const leaveDate = document.getElementById('leaveDate').value;
-        const leaveReason = document.getElementById('leaveReason').value;
-        const replacementType = document.getElementById('replacementType').value;
-        
-        let replacementDetails = {};
-        
-        if (replacementType === 'libur') {
-            const replacementDate = document.getElementById('replacementDate').value;
-            replacementDetails = {
-                type: 'libur',
-                date: replacementDate,
-                formattedDate: new Date(replacementDate).toLocaleDateString('id-ID', {
-                    weekday: 'long',
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                })
-            };
-        } else if (replacementType === 'jam') {
-            const replacementHourDate = document.getElementById('replacementHourDate').value;
-            const replacementHours = document.getElementById('replacementHours').value;
-            replacementDetails = {
-                type: 'jam',
-                date: replacementHourDate,
-                hours: replacementHours,
-                formattedDate: new Date(replacementHourDate).toLocaleDateString('id-ID', {
-                    weekday: 'long',
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                })
-            };
-        }
-        
-        const newLeave = {
-            id: 'LEAVE' + Date.now(),
-            employeeId: employee.id,
-            name: employee.name,
-            leaveDate: new Date(leaveDate).toLocaleDateString('id-ID', {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            }),
-            reason: leaveReason,
-            replacementType: replacementType,
-            replacementDetails: replacementDetails,
-            status: 'Pending',
-            replacementStatus: 'Belum Diganti', // Added default replacement status
-            submitDate: new Date().toLocaleDateString()
-        };
-        
-        leaveRecords.push(newLeave);
-        localStorage.setItem('leaveRecords', JSON.stringify(leaveRecords));
-        updateLeaveTable();
-        this.reset();
-    }
-});
 
       // Update attendance table
       function updateAttendanceTable() {
@@ -448,4 +329,3 @@ function getReplacementInfo(record) {
     </script>
   </body>
 </html>
-*

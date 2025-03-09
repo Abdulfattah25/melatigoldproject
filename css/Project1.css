@@ -360,6 +360,10 @@ footer {
   padding: 0.5rem;
   color: white;
 }
+.card-body {
+  font-size: 0.9rem;
+}
+
 @media screen and (max-width: 768px) {
   /* Make table scrollable horizontally */
   .container {

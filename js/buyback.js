@@ -74,7 +74,7 @@ const penerimaanHandler = {
 
   getLowPersentase(kondisiBarang) {
     const persentaseMap = {
-      1: 90,
+      1: 87,
       2: 85,
       3: 80,
     };
@@ -136,9 +136,9 @@ const penerimaanHandler = {
         <td>
           <select id="kondisiBarang" name="kondisiBarang" class="form-select form-select-sm" required>
             <option value="" disabled selected>Pilih</option>
-            <option value="1">Mengkilap, Mulus, Banyak Peminat</option>
-            <option value="2">Sedikit Kusam, Sedikit Baret, Model Bagus</option>
-            <option value="3">Kusam, Banyak Baret, Model Kurang Bagus</option>
+            <option value="1">1. (Sangat Baik) Mengkilap / Mulus</option>
+            <option value="2">2. (Sedang) Sedikit Kusam / Sedikit Baret </option>
+            <option value="3">3. (Kurang) Kusam / Banyak Baret</option>
           </select>
         </td>
         <td>

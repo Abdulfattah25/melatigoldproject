@@ -121,9 +121,9 @@
                     <td>
                       <select id="kondisiBarang" name="kondisiBarang" class="form-select form-select-sm" required>
                         <option value="" disabled selected>Pilih</option>
-                        <option value="1">1. Mengkilap, Mulus, Model Bagus</option>
-                        <option value="2">2. Sedikit Kusam, Sedikit Baret, Model Bagus</option>
-                        <option value="3">3. Kusam & Banyak Baret</option>
+                        <option value="1">1. (Sangat Baik) Mengkilap / Mulus</option>
+                        <option value="2">2. (Sedang) Sedikit Kusam / Sedikit Baret </option>
+                        <option value="3">3. (Kurang) Kusam / Banyak Baret</option>
                       </select>
                     </td>
                     <td>
@@ -162,12 +162,22 @@
               <h6 class="fw-bold">Kode Kategori Kondisi Barang:</h6>
               <ul>
                 <li>K1 = Kondisi Sangat Baik (Mengkilap, Mulus, Model Bagus)</li>
-                <li>K2 = Kondisi Sedang (Sedikit Kusam, Sedikit Baret, Model Bagus)</li>
-                <li>K3 = Kondisi Kurang (Kusam & Banyak Baret)</li>
+                <li>K2 = Kondisi Sedang :
+                  <ul>
+                  <li>
+                    1. Sedikit Kusam, Sedikit Baret, Model Bagus <br>
+                    2. Mengkilap, Mulus, Model Kurang Bagus
+                  </li>
+                </ul></li>
+                <li>K3 = Kondisi Kurang : <ul>
+                  <li>
+                    1. Kusam & Banyak Baret, <br>2. Sedikit Kusam, Sedikit Baret, Batu Lepas
+                  </li>
+                </ul></li>
               </ul>
               
               <h6 class="fw-bold mt-3">Aturan Penentuan Harga:</h6>
-              <p>Untuk pembelian beberapa barang dengan kondisi berbeda, harga mengikuti kondisi terendah untuk menyeragamkan nilai buyback. Contoh:</p>
+              <p>Untuk pembelian beberapa barang dengan kondisi berbeda dengan kadar emas yang sama, harga per gram mengikuti kondisi dibawahnya untuk menyeragamkan nilai buyback. Contoh:</p>
               <ul>
                 <li>Jika ada barang K1 dan K2, maka semua barang diharga mengikuti K2</li>
                 <li>Jika ada barang K1, K2 dan K3, maka semua barang diharga mengikuti K3</li>

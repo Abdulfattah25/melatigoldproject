@@ -57,7 +57,7 @@ const penerimaanHandler = {
   },
 
   calculateMelatiPersentase(kondisiBarang, persentaseBeli) {
-    if (persentaseBeli >= 85) {
+    if (persentaseBeli >= 90) {
       return this.getHighPersentase(kondisiBarang);
     }
     return this.getLowPersentase(kondisiBarang);
@@ -65,11 +65,11 @@ const penerimaanHandler = {
 
   getHighPersentase(kondisiBarang) {
     const persentaseMap = {
-      1: 95,
-      2: 93,
-      3: 90,
+      1: 98,
+      2: 95,
+      3: 93,
     };
-    return persentaseMap[kondisiBarang] || 85;
+    return persentaseMap[kondisiBarang] || 90;
   },
 
   getLowPersentase(kondisiBarang) {
@@ -78,7 +78,7 @@ const penerimaanHandler = {
       2: 85,
       3: 80,
     };
-    return persentaseMap[kondisiBarang] || 70;
+    return persentaseMap[kondisiBarang] || 80;
   },
 
   calculateLuarTokoPersentase(kondisiBarang) {

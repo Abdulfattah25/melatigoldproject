@@ -1,3 +1,10 @@
+function formatCurrency(value) {
+  return new Intl.NumberFormat("id-ID", {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+      useGrouping: true
+  }).format(value);
+  }
 // Form handling module
 const penerimaanHandler = {
   initializeForm() {
@@ -37,9 +44,18 @@ const penerimaanHandler = {
     });
 
     penerimaanHandler.displayResults(resultsHTML);
+    
   },
 
   calculatePenerimaan(asalToko, kondisiBarang, hargaBeli, hargaHariIni) {
+    // If purchase price is higher than today's price, use today's price
+    if (hargaBeli > hargaHariIni) {
+      return {
+          persentasePenerimaan: 100,
+          hargaPenerimaan: hargaHariIni
+      };
+  }
+    
     const persentaseBeli = (hargaBeli / hargaHariIni) * 100;
     let persentasePenerimaan;
     let hargaPenerimaan;
@@ -47,7 +63,11 @@ const penerimaanHandler = {
     if (asalToko === "Toko Melati") {
       persentasePenerimaan = this.calculateMelatiPersentase(kondisiBarang, persentaseBeli);
       hargaPenerimaan = (hargaHariIni * persentasePenerimaan) / 100;
-      hargaPenerimaan = Math.max(hargaBeli, hargaPenerimaan);
+      // If calculated price is lower than purchase price, use purchase price
+      if (hargaPenerimaan < hargaBeli) {
+        hargaPenerimaan = hargaBeli;
+        persentasePenerimaan = 100;
+    }
     } else {
       persentasePenerimaan = this.calculateLuarTokoPersentase(kondisiBarang);
       hargaPenerimaan = (hargaHariIni * persentasePenerimaan) / 100;
@@ -57,29 +77,43 @@ const penerimaanHandler = {
   },
 
   calculateMelatiPersentase(kondisiBarang, persentaseBeli) {
-    if (persentaseBeli >= 90) {
-      return this.getHighPersentase(kondisiBarang);
+    if (persentaseBeli >= 95) {
+        const persentaseMap = {
+            1: 98,
+            2: 97,
+            3: 96
+        };
+        return persentaseMap[kondisiBarang];
+    } else if (persentaseBeli >= 90) {
+        const persentaseMap = {
+            1: 97,
+            2: 96,
+            3: 95
+        };
+        return persentaseMap[kondisiBarang];
+    } else if (persentaseBeli >= 85) {
+        const persentaseMap = {
+            1: 95,
+            2: 94,
+            3: 93
+        };
+        return persentaseMap[kondisiBarang];
+    } else if (persentaseBeli >= 80) {
+        const persentaseMap = {
+            1: 93,
+            2: 90,
+            3: 88
+        };
+        return persentaseMap[kondisiBarang];
+    } else {
+        const persentaseMap = {
+            1: 90,
+            2: 87,
+            3: 80
+        };
+        return persentaseMap[kondisiBarang];
     }
-    return this.getLowPersentase(kondisiBarang);
-  },
-
-  getHighPersentase(kondisiBarang) {
-    const persentaseMap = {
-      1: 98,
-      2: 95,
-      3: 93,
-    };
-    return persentaseMap[kondisiBarang] || 90;
-  },
-
-  getLowPersentase(kondisiBarang) {
-    const persentaseMap = {
-      1: 87,
-      2: 85,
-      3: 80,
-    };
-    return persentaseMap[kondisiBarang] || 80;
-  },
+},
 
   calculateLuarTokoPersentase(kondisiBarang) {
     const persentaseMap = {
@@ -136,9 +170,9 @@ const penerimaanHandler = {
         <td>
           <select id="kondisiBarang" name="kondisiBarang" class="form-select form-select-sm" required>
             <option value="" disabled selected>Pilih</option>
-            <option value="1">1. (Sangat Baik) Mengkilap / Mulus</option>
-            <option value="2">2. (Sedang) Sedikit Kusam / Sedikit Baret </option>
-            <option value="3">3. (Kurang) Kusam / Banyak Baret</option>
+            <option value="1">K1</option>
+            <option value="2">K2</option>
+            <option value="3">K3</option>
           </select>
         </td>
         <td>
@@ -208,11 +242,5 @@ export function getNumericValue(formattedValue) {
 return formattedValue.replace(/\./g, "");
 }
 
-function formatCurrency(value) {
-return new Intl.NumberFormat("id-ID", {
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-    useGrouping: true
-}).format(value);
-}
+
 export { penerimaanHandler };
